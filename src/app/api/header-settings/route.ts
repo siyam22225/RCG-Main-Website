@@ -58,7 +58,7 @@ export async function GET() {
 
     const client = clientRows[0];
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       enterprises: enterprises.length ? enterprises : fallbackEnterprises,
       mainLogo: logo,
       clientLogin:
@@ -71,13 +71,17 @@ export async function GET() {
             }
           : { show: false },
     });
+    response.headers.set("Cache-Control", "public, max-age=300, stale-while-revalidate=600");
+    return response;
   } catch (error) {
     console.error("HEADER_SETTINGS_API_ERROR", error);
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       enterprises: fallbackEnterprises,
       mainLogo: fallbackLogo,
       clientLogin: { show: false },
     });
+    response.headers.set("Cache-Control", "public, max-age=60, stale-while-revalidate=300");
+    return response;
   }
 }

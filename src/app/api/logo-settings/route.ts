@@ -35,9 +35,13 @@ export async function GET() {
         ? mainRows[0]
         : DEFAULT_MAIN_LOGO;
 
-    return NextResponse.json({ mainLogo, brandLogos });
+    const response = NextResponse.json({ mainLogo, brandLogos });
+    response.headers.set("Cache-Control", "public, max-age=300, stale-while-revalidate=600");
+    return response;
   } catch (error) {
     console.error("PUBLIC_LOGO_SETTINGS_ERROR", error);
-    return NextResponse.json({ mainLogo: DEFAULT_MAIN_LOGO, brandLogos: [] });
+    const response = NextResponse.json({ mainLogo: DEFAULT_MAIN_LOGO, brandLogos: [] });
+    response.headers.set("Cache-Control", "public, max-age=60, stale-while-revalidate=300");
+    return response;
   }
 }

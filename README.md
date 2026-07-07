@@ -53,7 +53,10 @@ is explicitly requested.
    npm run dev
    ```
 
-Open `http://localhost:3000`.
+Open `http://localhost:3000`. The default development command uses Webpack for
+Windows stability because Turbopack hit `Access is denied (os error 5)` on this
+machine. Turbopack remains available for future testing with
+`npm run dev:turbopack`.
 
 ## Required Environment Variables
 
@@ -78,11 +81,20 @@ production. Do not commit real values.
 ```bash
 npm ci
 npm run dev
+npm run dev:turbopack
 npx prisma validate
 npx prisma generate
 npm run build
+npm audit
 npx tsc --noEmit --pretty false
 npm run admin:create
+```
+
+If `npm ci` fails with a certificate verification error on Windows or
+Namecheap, retry with the system certificate store:
+
+```bash
+NODE_OPTIONS=--use-system-ca npm ci --no-audit
 ```
 
 Run production mode locally after a successful build:

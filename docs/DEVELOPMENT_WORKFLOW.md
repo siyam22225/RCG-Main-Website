@@ -18,6 +18,13 @@
    npm ci
    ```
 
+   If npm fails with a certificate verification error on Windows or cPanel,
+   retry with the system certificate store:
+
+   ```bash
+   NODE_OPTIONS=--use-system-ca npm ci --no-audit
+   ```
+
 5. Validate Prisma and generate the client:
 
    ```bash
@@ -102,6 +109,18 @@ Default URL:
 http://localhost:3000
 ```
 
+`npm run dev` uses Webpack (`next dev --webpack`) because Turbopack previously
+failed on this Windows machine with `Access is denied (os error 5)`. Optional
+Turbopack testing is still available:
+
+```bash
+npm run dev:turbopack
+```
+
+If a dev run leaves stale `.next/dev` type files and a later production build
+reports errors under `.next/dev/types`, remove only the ignored `.next/dev`
+directory and rerun `npm run build`.
+
 ## Production Server Locally
 
 Build first:
@@ -131,6 +150,7 @@ Stop the server with Ctrl+C or by stopping the spawned process.
 Run:
 
 ```bash
+npm audit
 npx prisma validate
 npx prisma generate
 npm run build

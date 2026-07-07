@@ -16,10 +16,23 @@ speculative issues without confirming them in the source or runtime.
 
 - Severity: High for production operations.
 - Current status: Uploads are stored under `public/uploads` on the server
-  filesystem.
+  filesystem. Local read-only checks found database records pointing at
+  `/uploads/images/...` files that are not present in this checkout, which can
+  cause broken media requests during local smoke tests.
 - Safe future fix: Keep a separate upload backup/restore process for cPanel.
   Later, migrate uploads to durable object storage after a dedicated design and
   migration plan.
+
+## Low-Resolution Source Media
+
+- Severity: Medium.
+- Current status: Some bundled source assets are low resolution for their
+  rendered positions, including `public/images/hero/slide-1.jpg`,
+  `public/images/corporate-profile.jpg`, and several board/director portraits
+  under `public/images/message`.
+- Safe future fix: Replace the affected source files with approved higher
+  resolution brand/media assets. Do not invent or generate replacement media
+  without approval.
 
 ## In-Memory Rate Limits
 
@@ -65,3 +78,21 @@ speculative issues without confirming them in the source or runtime.
 - Safe future fix: Take and verify a production database backup, run deploy in a
   staging clone if possible, then run `npx prisma migrate deploy` only after
   explicit approval.
+
+## Turbopack Local Dev On Windows
+
+- Severity: Low for production, Medium for local developer experience.
+- Current status: `next dev` with Turbopack previously failed on this Windows
+  machine with `Access is denied (os error 5)`.
+- Safe future fix: The default `npm run dev` uses Webpack. Re-test
+  `npm run dev:turbopack` only after Next.js/Turbopack or local filesystem
+  conditions change.
+
+## npm Certificate Store
+
+- Severity: Low to Medium.
+- Current status: Some npm commands needed `NODE_OPTIONS=--use-system-ca` in
+  this environment to avoid certificate verification errors.
+- Safe future fix: Keep the system certificate workaround documented for
+  Windows/cPanel install steps and investigate host certificate configuration if
+  it recurs.

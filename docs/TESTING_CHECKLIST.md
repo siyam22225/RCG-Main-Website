@@ -99,6 +99,14 @@ For every smoke-tested page:
 - Check images and uploaded media where relevant.
 - Check that public pages are not accidentally showing admin-only content.
 
+For media-heavy pages, distinguish code failures from environment data issues:
+
+- Missing `/uploads/...` files usually mean `public/uploads` was not restored.
+- Low-resolution source files should be replaced by the client rather than
+  stretched or generated in code.
+- Video cards should not download full raw video files merely to show a
+  thumbnail; verify posters/thumbnails where available.
+
 ## Namecheap/cPanel Post-Deploy Checklist
 
 - Confirm Node.js version satisfies `>=20.9.0 <25`.

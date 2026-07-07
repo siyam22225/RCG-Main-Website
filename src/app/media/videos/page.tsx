@@ -94,25 +94,15 @@ export default function MediaVideosPage() {
           src={thumbnail}
           alt={video.title}
           className="preview-media"
-        />
-      );
-    }
-
-    if (video.sourceType === "raw") {
-      return (
-        <video
-          src={video.videoUrl}
-          className="preview-media"
-          muted
-          playsInline
-          preload="metadata"
+          loading="lazy"
+          decoding="async"
         />
       );
     }
 
     return (
       <div className="preview-fallback">
-        <span>No Preview</span>
+        <span>{video.sourceType === "raw" ? "Video Preview" : "No Preview"}</span>
       </div>
     );
   };

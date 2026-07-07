@@ -21,10 +21,12 @@ export async function GET() {
       },
     });
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       success: true,
       data: slides,
     });
+    response.headers.set("Cache-Control", "public, max-age=300, stale-while-revalidate=600");
+    return response;
   } catch (error) {
     console.error("PUBLIC_HOME_SLIDES_GET_ERROR", error);
 

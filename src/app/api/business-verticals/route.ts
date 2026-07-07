@@ -16,7 +16,9 @@ export async function GET() {
       },
     });
 
-    return NextResponse.json({ categories });
+    const response = NextResponse.json({ categories });
+    response.headers.set("Cache-Control", "public, max-age=300, stale-while-revalidate=600");
+    return response;
   } catch (error) {
     console.error("PUBLIC_BUSINESS_VERTICAL_GET_ERROR", error);
     return NextResponse.json({ categories: [] }, { status: 500 });

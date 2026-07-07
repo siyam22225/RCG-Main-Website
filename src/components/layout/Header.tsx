@@ -136,9 +136,7 @@ export default function Header() {
         }
 
         try {
-          const officeResponse = await fetch("/api/office-settings", {
-            cache: "no-store",
-          });
+          const officeResponse = await fetch("/api/office-settings");
 
           const officeJson = await officeResponse.json();
 
@@ -157,9 +155,7 @@ export default function Header() {
         }
 
         try {
-          const verticalResponse = await fetch("/api/business-verticals", {
-            cache: "no-store",
-          });
+          const verticalResponse = await fetch("/api/business-verticals");
 
           const verticalJson = await verticalResponse.json();
 

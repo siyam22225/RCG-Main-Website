@@ -9,9 +9,20 @@ export async function GET() {
       orderBy: {
         createdAt: "desc",
       },
+      select: {
+        id: true,
+        title: true,
+        videoUrl: true,
+        thumbnail: true,
+        category: true,
+        sourceType: true,
+        createdAt: true,
+      },
     });
 
-    return NextResponse.json(videos);
+    const response = NextResponse.json(videos);
+    response.headers.set("Cache-Control", "public, max-age=300, stale-while-revalidate=600");
+    return response;
   } catch (error) {
     console.error("GET /api/videos error:", error);
 

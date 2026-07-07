@@ -44,9 +44,11 @@ These are generally safe in this repo:
 
 ```bash
 npm ci
+npm run dev
 npx prisma validate
 npx prisma generate
 npm run build
+npm audit
 npx tsc --noEmit --pretty false
 node --check server.js
 node --check scripts/create-admin.mjs
@@ -54,6 +56,11 @@ node --check scripts/create-admin.mjs
 
 `npm run build` may read from the configured database through server-rendered
 routes. It must not write data.
+
+`npm run dev` intentionally uses `next dev --webpack` for Windows local
+stability. `npm run dev:turbopack` exists only as an optional diagnostic path
+because Turbopack previously failed on this machine with `Access is denied (os
+error 5)`.
 
 ## Dangerous Commands Requiring Explicit Approval
 
@@ -77,6 +84,7 @@ staging validation, and explicit approval.
 Before committing any code or documentation change, run:
 
 ```bash
+npm audit
 npx prisma validate
 npx prisma generate
 npm run build
@@ -116,3 +124,12 @@ For deployment work, also review:
 - Use `docs/TESTING_CHECKLIST.md` for smoke testing.
 - Use `docs/KNOWN_ISSUES.md` for current caveats.
 - Use `PRODUCTION_RUNBOOK.md` for production execution.
+
+## Generated File Hygiene
+
+- `.next` is ignored runtime/build output and must not be committed.
+- If a local dev run leaves stale `.next/dev` type files and the production
+  build reports type errors from `.next/dev/types`, delete only the ignored
+  `.next/dev` directory and rerun the build.
+- Do not commit `public/uploads`; it is runtime media data and must be backed up
+  or restored separately.

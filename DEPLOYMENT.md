@@ -68,6 +68,15 @@ npx prisma generate
 npm run build
 ```
 
+If npm fails with a certificate verification error on Namecheap/cPanel, retry
+install with the system certificate store:
+
+```bash
+NODE_OPTIONS=--use-system-ca npm ci --no-audit
+npx prisma generate
+npm run build
+```
+
 For Namecheap/cPanel Node hosting, use the `server.js` startup file. If running manually after build:
 
 ```bash
@@ -178,6 +187,10 @@ Do not commit `.env`, print or share the admin password, or seed production repe
 ## Upload Warning
 
 Current uploads are stored under `public/uploads` on the local filesystem. Production deployment must preserve and back up this folder carefully. A later phase can move uploads to durable object storage.
+
+Do not include `public/uploads` in the normal application package. Restore it
+separately after extracting the app package, and verify media-heavy pages after
+restore.
 
 ## Rollback Checklist
 

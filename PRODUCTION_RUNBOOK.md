@@ -13,6 +13,8 @@ This is the final manual execution checklist for deploying the Real Capita Next.
 - Confirm `public/uploads` backup and restore handling before uploading a new app package.
 - Confirm the pending Prisma reconciliation migration was already tested on disposable/staging databases.
 - Confirm a production database backup can be taken and restored before running migrations.
+- Confirm the package was built from the current lockfile after `npm audit`
+  reports no known vulnerabilities.
 
 ## 2. Required Environment Variables
 
@@ -216,6 +218,7 @@ SEO and system:
 - `/sitemap.xml`
 - Browser console check.
 - Server logs check.
+- Media check for restored uploads and obvious low-resolution source assets.
 
 ## 8. Rollback Plan
 

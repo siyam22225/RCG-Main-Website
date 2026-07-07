@@ -4,12 +4,28 @@ export async function getLatestNews() {
   return prisma.news.findMany({
     orderBy: { publishedAt: "desc" },
     take: 6,
+    select: {
+      id: true,
+      title: true,
+      slug: true,
+      excerpt: true,
+      imageUrl: true,
+      publishedAt: true,
+    },
   });
 }
 
 export async function getAllNews() {
   return prisma.news.findMany({
     orderBy: { publishedAt: "desc" },
+    select: {
+      id: true,
+      title: true,
+      slug: true,
+      excerpt: true,
+      imageUrl: true,
+      publishedAt: true,
+    },
   });
 }
 
@@ -28,5 +44,13 @@ export async function getOtherNews(currentSlug: string) {
     },
     orderBy: { publishedAt: "desc" },
     take: 6,
+    select: {
+      id: true,
+      title: true,
+      slug: true,
+      excerpt: true,
+      imageUrl: true,
+      publishedAt: true,
+    },
   });
 }

@@ -302,6 +302,9 @@ export default function PhotosPageClient({ initialPhotos = [] }: Props) {
                     alt={photo.title}
                     fill
                     className="photo-image"
+                    sizes="(max-width: 640px) 50vw, (max-width: 900px) 33vw, (max-width: 1200px) 25vw, 260px"
+                    loading="lazy"
+                    quality={82}
                   />
                 </div>
 
@@ -335,6 +338,8 @@ export default function PhotosPageClient({ initialPhotos = [] }: Props) {
                 alt={selectedPhoto.title}
                 fill
                 className="modal-image"
+                sizes="min(100vw, 1050px)"
+                quality={90}
               />
             </div>
           </div>
