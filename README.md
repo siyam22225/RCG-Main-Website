@@ -1,40 +1,116 @@
 # Real Capita Website
 
-Next.js App Router website for Real Capita Group with Prisma/PostgreSQL-backed CMS and admin modules.
+Real Capita corporate CMS website built with Next.js App Router, TypeScript,
+Prisma, PostgreSQL, JWT cookie admin authentication, and local filesystem
+uploads.
+
+The current production goal is to stabilize and safely deploy the existing
+website. Do not add new features, redesign UI, or broaden scope unless that work
+is explicitly requested.
+
+## Tech Stack
+
+- Next.js App Router
+- TypeScript
+- React
+- Prisma 7
+- PostgreSQL
+- JWT cookie admin auth
+- Local uploads under `public/uploads`
+
+## Main Features
+
+- Public corporate pages: homepage, about pages, business verticals,
+  enterprise/project pages, media, messages, careers, and contact.
+- Admin CMS: dashboard, news, photos, videos, careers, applications, contact
+  messages, board directors, popup, and settings.
+- Configurable settings: SEO, logos, social links, office details, home slider,
+  client login button, former chairman message, and business verticals.
+- Security hardening: protected admin APIs, same-origin mutation guard,
+  production cookie flags, upload validation, and lightweight in-memory rate
+  limits.
 
 ## Local Setup
 
 1. Copy `.env.example` to `.env`.
-2. Fill in `DATABASE_URL` and `ADMIN_JWT_SECRET` with local development values.
-3. Install dependencies and start the dev server:
+2. Fill in local values for the required environment variables.
+3. Install dependencies:
 
-```bash
-npm install
-npm run dev
-```
+   ```bash
+   npm ci
+   ```
+
+4. Validate Prisma and generate the client:
+
+   ```bash
+   npx prisma validate
+   npx prisma generate
+   ```
+
+5. Start development:
+
+   ```bash
+   npm run dev
+   ```
 
 Open `http://localhost:3000`.
 
 ## Required Environment Variables
 
+Set values in `.env` for local development or in the hosting control panel for
+production. Do not commit real values.
+
 | Variable | Required | Purpose |
 | --- | --- | --- |
 | `DATABASE_URL` | Yes | PostgreSQL connection string used by Prisma. |
-| `ADMIN_JWT_SECRET` | Yes | Secret key used to sign and verify admin auth cookies. Use a long random value in production. |
+| `ADMIN_JWT_SECRET` | Yes | Long random secret used to sign and verify admin JWT cookies. |
 | `NEXT_PUBLIC_SITE_URL` | Yes | Public site origin used by `robots.txt` and `sitemap.xml`. |
+| `NODE_ENV` | Production | Set to `production` on the host. |
+| `PORT` | Production | Provided by the Node.js hosting runtime. |
+| `HOSTNAME` | Optional | Bind host for `server.js`; defaults to `127.0.0.1`. |
+| `CREATE_ADMIN_EMAIL` | Temporary | First-admin bootstrap email. |
+| `CREATE_ADMIN_PASSWORD` | Temporary | First-admin bootstrap password. |
+| `CREATE_ADMIN_NAME` | Optional temporary | First-admin display name. |
+| `CREATE_ADMIN_OVERWRITE` | Optional temporary | Set to `true` only for an intentional admin password reset. |
 
-Do not commit `.env` or real production secrets.
-
-## Production Validation Commands
-
-Run these before deployment:
+## Common Commands
 
 ```bash
+npm ci
+npm run dev
 npx prisma validate
 npx prisma generate
 npm run build
+npx tsc --noEmit --pretty false
+npm run admin:create
 ```
 
-This app uses API routes, Prisma, admin auth, and server-rendered pages, so it must be deployed as a Node.js application. Do not deploy it as a static export.
+Run production mode locally after a successful build:
 
-See `DEPLOYMENT.md` for the Namecheap/cPanel deployment checklist.
+```powershell
+$env:NODE_ENV="production"
+$env:PORT="3100"
+node server.js
+```
+
+## Documentation Map
+
+- `AGENTS.md` - root instructions for future AI agents and maintainers.
+- `docs/PROJECT_OVERVIEW.md` - product/module overview and production caveats.
+- `docs/ARCHITECTURE.md` - route, API, auth, upload, layout, and Prisma map.
+- `docs/DEVELOPMENT_WORKFLOW.md` - local development and validation workflow.
+- `docs/TESTING_CHECKLIST.md` - manual and deployment smoke-test checklist.
+- `docs/KNOWN_ISSUES.md` - current risks and safe future fixes.
+- `DEPLOYMENT.md` - general Namecheap/cPanel deployment notes.
+- `PRODUCTION_RUNBOOK.md` - final production execution checklist.
+
+## Security And Deployment Warnings
+
+- Never commit `.env` or real secrets.
+- Do not run destructive Prisma commands against production.
+- Do not run `prisma db push`, `prisma migrate reset`, or `prisma migrate dev`
+  against production.
+- Run `npx prisma migrate deploy` only after backup and explicit approval.
+- Uploads are stored on the local filesystem under `public/uploads` and require
+  separate backup/restore handling.
+- This app is dynamic and must be deployed as a Node.js app, not a static export.

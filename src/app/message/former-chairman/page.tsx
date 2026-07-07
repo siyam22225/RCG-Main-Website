@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
@@ -53,13 +52,11 @@ function parseProfileItems(value: string | null | undefined): Array<[string, str
 }
 
 export default async function FormerChairmanPage() {
-  const settings = await prisma.formerChairmanMessage.findFirst({
+  const cmsSettings = await prisma.formerChairmanMessage.findFirst({
     orderBy: { createdAt: "asc" },
   });
 
-  if (settings && settings.isActive === false) {
-    notFound();
-  }
+  const settings = cmsSettings?.isActive === false ? null : cmsSettings;
 
   const name = settings?.name?.trim() || "Late Alhaj Md. Anower Hossain";
   const designation = settings?.designation?.trim() || "1960 – 2020";
