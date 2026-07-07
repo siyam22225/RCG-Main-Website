@@ -1,0 +1,462 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model News {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  excerpt     String
+  content     String
+  imageUrl    String
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Photo {
+  id        String   @id @default(cuid())
+  title     String
+  imageUrl  String
+  category  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Video {
+  id         String   @id @default(cuid())
+  title      String
+  videoUrl   String?
+  thumbnail  String?
+  category   String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  sourceType String   @default("youtube")
+  youtubeUrl String?
+}
+
+model Enterprise {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  buttonHref  String?
+  buttonText  String?
+  isActive    Boolean  @default(true)
+  location    String?
+  profileUrl  String?
+  sortOrder   Int      @default(0)
+}
+
+model ContactMessage {
+  id             String    @id @default(cuid())
+  name           String
+  email          String
+  phone          String
+  queryType      String
+  subject        String
+  message        String
+  createdAt      DateTime  @default(now())
+  adminNote      String?
+  followUpStatus String    @default("new")
+  lastFollowUpAt DateTime?
+}
+
+model AdminUser {
+  id                     String   @id @default(cuid())
+  email                  String   @unique
+  password               String
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+  isActive               Boolean  @default(true)
+  isProtected            Boolean  @default(false)
+  name                   String?
+  role                   String   @default("admin")
+  isHiddenFromAdminPanel Boolean  @default(false)
+}
+
+model SocialLink {
+  id        String   @id @default(cuid())
+  label     String   @unique
+  href      String
+  iconUrl   String?
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model HomeSlide {
+  id         String   @id @default(cuid())
+  title      String?
+  subtitle   String?
+  imageUrl   String
+  buttonText String?
+  buttonHref String?
+  sortOrder  Int      @default(0)
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model OfficeSetting {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  title     String
+  address   String
+  phone     String
+  email     String
+  mapUrl    String?
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model BoardDirector {
+  id             String   @id @default(cuid())
+  slug           String   @unique
+  name           String
+  role           String
+  education      String?
+  shortMessage   String?
+  image          String?
+  facebook       String?
+  whatsapp       String?
+  profileEnabled Boolean  @default(false)
+  isActive       Boolean  @default(true)
+  displayOrder   Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @default(now()) @updatedAt
+  messageBody    String?
+  messageTitle   String?
+  profileDetails String?
+  showMessage    Boolean  @default(true)
+  website        String?
+}
+
+model EnterpriseProject {
+  id               String   @id @default(cuid())
+  enterpriseSlug   String
+  slug             String
+  name             String
+  location         String?
+  image            String?
+  shortDescription String?
+  fullDescription  Json?
+  media            Json?
+  profilePdf       String?
+  websiteUrl       String?
+  tour360Image     String?
+  isActive         Boolean  @default(true)
+  displayOrder     Int      @default(0)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @default(now()) @updatedAt
+  layoutPdf        String?
+
+  @@unique([enterpriseSlug, slug])
+}
+
+model ClientLoginSetting {
+  id           String   @id @default("main")
+  buttonText   String   @default("Client Login")
+  buttonUrl    String   @default("")
+  isEnabled    Boolean  @default(false)
+  openInNewTab Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now()) @updatedAt
+}
+
+model WebsiteLogoSetting {
+  id        String   @id @default("main")
+  logoUrl   String   @default("/images/logos/Asset 14.png")
+  altText   String   @default("Real Capita Group")
+  isEnabled Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+model BrandLogo {
+  id        String   @id @default(cuid())
+  name      String
+  imageUrl  String
+  linkUrl   String?
+  isActive  Boolean  @default(true)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+model SeoSetting {
+  id                     String   @id @default("main")
+  siteTitle              String   @default("Real Capita Group")
+  metaDescription        String   @default("")
+  metaKeywords           String   @default("")
+  ogTitle                String   @default("")
+  ogDescription          String   @default("")
+  ogImage                String   @default("")
+  googleVerificationCode String   @default("")
+  allowIndexing          Boolean  @default(true)
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @default(now()) @updatedAt
+}
+
+model AboutPageContent {
+  id         String   @id
+  pageKey    String   @unique
+  title      String
+  imageUrl   String
+  paragraphs Json     @default("[]")
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
+}
+
+model CareerVacancy {
+  id                String              @id @default(cuid())
+  title             String
+  slug              String              @unique
+  department        String
+  jobType           String
+  location          String
+  salaryRange       String?
+  deadline          DateTime?
+  shortDescription  String
+  responsibilities  String?
+  requirements      String?
+  experience        String?
+  numberOfVacancies Int?
+maxCvSizeMb     Int      @default(5)
+  status            String              @default("draft")
+  isFeatured        Boolean             @default(false)
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  applications      CareerApplication[]
+
+  @@index([status])
+  @@index([department])
+  @@index([createdAt])
+}
+
+model CareerApplication {
+  id             String         @id @default(cuid())
+  vacancyId      String?
+  position       String
+  name           String
+  phone          String
+  email          String
+  experience     String?
+  expectedSalary String?
+  message        String?
+  cvUrl          String
+  status         String         @default("new")
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  vacancy        CareerVacancy? @relation(fields: [vacancyId], references: [id])
+
+  @@index([vacancyId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model Notice {
+  id               String   @id @default(cuid())
+  title            String
+  slug             String   @unique
+  category         String
+  publishDate      DateTime @default(now())
+  shortDescription String
+  details          String?
+  pdfUrl           String?
+  status           String   @default("draft")
+  isFeatured       Boolean  @default(false)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([status])
+  @@index([category])
+  @@index([publishDate])
+}
+
+model BusinessVerticalCategory {
+  id           String                 @id @default(cuid())
+  label        String
+  slug         String                 @unique
+  displayOrder Int                    @default(0)
+  isActive     Boolean                @default(true)
+  createdAt    DateTime               @default(now())
+  updatedAt    DateTime               @updatedAt
+  items        BusinessVerticalItem[]
+
+  @@index([isActive])
+  @@index([displayOrder])
+}
+
+model BusinessVerticalItem {
+  id             String                   @id @default(cuid())
+  categoryId     String
+  label          String
+  enterpriseSlug String?
+  targetUrl      String?
+  displayOrder   Int                      @default(0)
+  isActive       Boolean                  @default(true)
+  createdAt      DateTime                 @default(now())
+  updatedAt      DateTime                 @updatedAt
+  imageUrl       String?
+  description    String?
+  location       String?
+  websiteUrl     String?
+  category       BusinessVerticalCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@index([categoryId])
+  @@index([displayOrder])
+  @@index([isActive])
+}
+
+model FormerChairmanMessage {
+  id             String   @id @default(cuid())
+  isActive       Boolean  @default(true)
+  name           String   @default("Former Chairman")
+  designation    String?
+  image          String?
+  title          String   @default("Former Chairman Message")
+  messageBody    String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  eyebrow        String?
+  introLead      String?
+  articleLabel   String?
+  articleHeading String?
+  profileItems   String?
+}
+
+model CareerPageSetting {
+  id                           String   @id @default("main")
+  sectionTag                   String   @default("Career")
+  headline                     String   @default("Join Real Capita Group")
+  introText                    String   @default("")
+  point1                       String   @default("")
+  point2                       String   @default("")
+  point3                       String   @default("")
+  point4                       String   @default("")
+  currentOpenTitle             String   @default("Current Open Positions")
+  noVacancyText                String   @default("")
+  applyTag                     String   @default("Apply Now")
+  applyTitle                   String   @default("Submit Your CV")
+  applyIntro                   String   @default("")
+  openApplicationLabel         String   @default("Open Application / Future Opportunity")
+  preferredPositionLabel       String   @default("Preferred Position")
+  preferredPositionPlaceholder String   @default("")
+  customPositions              String   @default("[]")
+  createdAt                    DateTime @default(now())
+  updatedAt                    DateTime @default(now())
+}
+
+model NoticeCategory {
+  id           String   @id
+  name         String   @unique
+  slug         String   @unique
+  isActive     Boolean  @default(true)
+  displayOrder Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now())
+
+  @@index([displayOrder])
+  @@index([isActive])
+}
+
+model Property {
+  id                 String   @id
+  title              String
+  slug               String   @unique
+  propertyType       String
+  location           String
+  price              Int
+  sizeSqft           Int
+  bedrooms           Int?
+  bathrooms          Int?
+  status             String   @default("available")
+  shortDescription   String?
+  imageUrl           String?
+  isFeatured         Boolean  @default(false)
+  isActive           Boolean  @default(true)
+  displayOrder       Int      @default(0)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime
+  bookingAmount      Int?
+  downPayment        Int?
+  monthlyInstallment Int?
+  installmentMonths  Int?
+  handoverPayment    Int?
+
+  @@index([isActive])
+  @@index([location])
+  @@index([price])
+  @@index([propertyType])
+}
+
+model PropertyBooking {
+  id               String   @id
+  bookingCode      String   @unique
+  propertyId       String
+  propertyTitle    String
+  customerName     String
+  phone            String
+  email            String?
+  address          String?
+  bookingAmount    Int
+  paymentMethod    String?
+  paymentReference String?
+  note             String?
+  status           String   @default("pending")
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime
+
+  @@index([bookingCode])
+  @@index([createdAt])
+  @@index([propertyId])
+  @@index([status])
+}
+
+model PropertyVisitRequest {
+  id            String    @id
+  propertyId    String
+  propertyTitle String
+  visitorName   String
+  phone         String
+  email         String?
+  preferredDate DateTime?
+  preferredTime String?
+  message       String?
+  status        String    @default("pending")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime
+
+  @@index([createdAt])
+  @@index([propertyId])
+  @@index([status])
+}
+
+model SitePopupSetting {
+  id                 String   @id @default("main")
+  isActive           Boolean  @default(false)
+  title              String   @default("")
+  message            String   @default("")
+  imageUrl           String?
+  buttonText         String?
+  buttonHref         String?
+  showOncePerSession Boolean  @default(true)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @default(now())
+  isTitleActive      Boolean  @default(true)
+  isMessageActive    Boolean  @default(true)
+  isButtonActive     Boolean  @default(true)
+  autoCloseSeconds   Int      @default(0)
+}

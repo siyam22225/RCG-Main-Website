@@ -1,0 +1,77 @@
+.settingsCard {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.08);
+}
+
+.notice {
+  margin: 0 0 16px;
+  color: #075c9d;
+  font-weight: 850;
+}
+
+.settingsCard form {
+  display: grid;
+  gap: 16px;
+}
+
+.settingsCard label {
+  display: grid;
+  gap: 8px;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 850;
+}
+
+.settingsCard input,
+.settingsCard textarea {
+  width: 100%;
+  border: 1px solid #d7e3ee;
+  border-radius: 14px;
+  padding: 12px 13px;
+  color: #0f172a;
+  background: #f8fbff;
+  font: inherit;
+}
+
+.settingsCard textarea {
+  resize: vertical;
+}
+
+.checkRow {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 16px;
+  background: #f8fbff;
+  border: 1px solid #d7e3ee;
+}
+
+.checkRow input {
+  width: auto !important;
+}
+
+.uploadNote {
+  color: #075c9d;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.settingsCard button {
+  width: fit-content;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 22px;
+  background: linear-gradient(135deg, #0ea5e9, #16a34a);
+  color: #ffffff;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.settingsCard button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}

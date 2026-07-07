@@ -1,0 +1,2 @@
+ALTER TABLE "AdminUser"
+ADD COLUMN IF NOT EXISTS "isHiddenFromAdminPanel" BOOLEAN NOT NULL DEFAULT false;
