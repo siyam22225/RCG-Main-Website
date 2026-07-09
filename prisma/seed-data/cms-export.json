@@ -82,9 +82,9 @@
   "homeSlide": [
     {
       "id": "cmodfkgdl0000iillafyqwclk",
-      "title": null,
-      "subtitle": null,
-      "imageUrl": "/uploads/images/1780991909621-rc-daira-noor.jpg",
+      "title": "Real Capita Group",
+      "subtitle": "Responsible growth across property, hospitality, service, and community initiatives.",
+      "imageUrl": "/images/hero/slide-1.jpg",
       "buttonText": null,
       "buttonHref": null,
       "sortOrder": 1,
@@ -96,7 +96,7 @@
       "id": "cmodfkgdo0001iill33rlvmyo",
       "title": "RC Property",
       "subtitle": "Planned property development with long-term value.",
-      "imageUrl": "/uploads/images/1780991927139-rc-shanti-kutir.png",
+      "imageUrl": "/images/hero/slide-2.jpg",
       "buttonText": "View Details",
       "buttonHref": "/enterprise/land-rpcdl",
       "sortOrder": 2,
@@ -185,8 +185,8 @@
     {
       "id": "main",
       "buttonText": "Customer Login",
-      "buttonUrl": "http://15.206.221.72:6886",
-      "isEnabled": true,
+      "buttonUrl": "",
+      "isEnabled": false,
       "openInNewTab": true,
       "createdAt": "2026-04-27T16:02:17.953Z",
       "updatedAt": "2026-05-21T18:09:28.559Z"
@@ -195,12 +195,12 @@
   "formerChairmanMessage": [
     {
       "id": "cmougf5im0000eksui93ood8q",
-      "isActive": false,
+      "isActive": true,
       "name": "Chairman",
-      "designation": "Chairman",
+      "designation": "Chairman, Real Capita Group",
       "image": "/images/message/former-chairman.jpg",
       "title": "Chairman Message",
-      "messageBody": null,
+      "messageBody": "Real Capita Group is committed to responsible growth, dependable service, and long-term value for customers, partners, and communities.",
       "createdAt": "2026-05-06T19:32:32.303Z",
       "updatedAt": "2026-07-09T09:15:52.131Z",
       "eyebrow": "Who We Are",
@@ -231,7 +231,7 @@
       "title": "Mission Vision & Values",
       "imageUrl": "/images/mission-vision-values.jpg",
       "paragraphs": [
-        "Our mission is to develop trusted projects and business initiatives that create practical value for customers, partners, and communities. We work with a focus on service quality, long-term planning, and responsible growth.BBBBBBBBBBBb",
+        "Our mission is to develop trusted projects and business initiatives that create practical value for customers, partners, and communities. We work with a focus on service quality, long-term planning, and responsible growth.",
         "Our vision is to become a respected and dependable corporate group known for professional excellence, customer confidence, and sustainable progress.",
         "Our values are built on integrity, commitment, accountability, innovation, and continuous improvement."
       ],
@@ -258,19 +258,19 @@
   "sitePopupSetting": [
     {
       "id": "main",
-      "isActive": true,
-      "title": "",
-      "message": "",
-      "imageUrl": "/uploads/images/1783547416909-screenshot-2026-06-24-113005.png",
-      "buttonText": "siyam",
-      "buttonHref": "/carrer",
+      "isActive": false,
+      "title": "Welcome to Real Capita Group",
+      "message": "Explore our latest corporate updates, projects, and service information.",
+      "imageUrl": null,
+      "buttonText": "Explore Updates",
+      "buttonHref": "/media/news",
       "showOncePerSession": true,
       "createdAt": "2026-05-08T17:32:17.282Z",
       "updatedAt": "2026-07-09T09:08:48.993Z",
       "isTitleActive": true,
       "isMessageActive": true,
       "isButtonActive": true,
-      "autoCloseSeconds": 3
+      "autoCloseSeconds": 0
     }
   ],
   "news": [
@@ -334,7 +334,7 @@
     {
       "id": "cmq7l8huk0000iosumb44c49p",
       "title": "real capita",
-      "imageUrl": "/uploads/images/1781066839298-press-release-the-daily-jugantor-insurence-mou.jpg",
+      "imageUrl": "/images/news/photo-1.jpg",
       "category": "Other",
       "createdAt": "2026-06-10T04:48:02.396Z",
       "updatedAt": "2026-06-10T04:48:02.396Z"
@@ -342,7 +342,7 @@
     {
       "id": "cmq7lizl30000pwsuwwezqvyo",
       "title": "1-2-768x1200.png",
-      "imageUrl": "/uploads/images/1781067362767-1-2-768x1200.png",
+      "imageUrl": "/images/news/photo-2.jpg",
       "category": "Event",
       "createdAt": "2026-06-10T04:56:11.943Z",
       "updatedAt": "2026-06-10T04:56:11.943Z"
@@ -350,7 +350,7 @@
     {
       "id": "cmq7lj01u0001pwsu6wpxccba",
       "title": "Article-@-Daily-Janokonthou-Press_Mohammad-Arifuzzaman.jpg",
-      "imageUrl": "/uploads/images/1781067362748-article-daily-janokonthou-press-mohammad-arifuzzaman.jpg",
+      "imageUrl": "/images/news/photo-3.jpg",
       "category": "Event",
       "createdAt": "2026-06-10T04:56:12.546Z",
       "updatedAt": "2026-06-10T04:56:12.546Z"
@@ -358,7 +358,7 @@
     {
       "id": "cmq7lj0hz0002pwsu36fg60i6",
       "title": "Article-@-Daily-Ittefaq-Press_Mohammad-Arifuzzaman.jpg",
-      "imageUrl": "/uploads/images/1781067362742-article-daily-ittefaq-press-mohammad-arifuzzaman.jpg",
+      "imageUrl": "/images/news/photo-4.jpg",
       "category": "Event",
       "createdAt": "2026-06-10T04:56:13.127Z",
       "updatedAt": "2026-06-10T04:56:13.127Z"
@@ -366,7 +366,7 @@
     {
       "id": "cmq7loy7y0003pwsu7zgtbjp5",
       "title": "Article-@-Daily-Tribunal-Press_Mohammad-Arifuzzaman-768x970.jpeg",
-      "imageUrl": "/uploads/images/1781067646273-article-daily-tribunal-press-mohammad-arifuzzaman-768x970.jpeg",
+      "imageUrl": "/images/news/photo-5.jpg",
       "category": "Office",
       "createdAt": "2026-06-10T05:00:50.111Z",
       "updatedAt": "2026-06-10T05:00:50.111Z"
@@ -374,7 +374,7 @@
     {
       "id": "cmq7loyp30004pwsuue3a1ezj",
       "title": "Jugantor-Press-RCG-3rd-Year-Stepping-Up.png",
-      "imageUrl": "/uploads/images/1781067646312-jugantor-press-rcg-3rd-year-stepping-up.png",
+      "imageUrl": "/images/news/photo-6.jpg",
       "category": "Office",
       "createdAt": "2026-06-10T05:00:50.727Z",
       "updatedAt": "2026-06-10T05:00:50.727Z"
@@ -382,7 +382,7 @@
     {
       "id": "cmq7loz5n0005pwsu10iw0s1c",
       "title": "72740381_1072433579815237_7990693706820747264_n-768x805.jpg",
-      "imageUrl": "/uploads/images/1781067646311-72740381-1072433579815237-7990693706820747264-n-768x805.jpg",
+      "imageUrl": "/images/enterprises/enterprise-1.jpg",
       "category": "Office",
       "createdAt": "2026-06-10T05:00:51.323Z",
       "updatedAt": "2026-06-10T05:00:51.323Z"
@@ -390,7 +390,7 @@
     {
       "id": "cmq7lozmk0006pwsuqe5i946c",
       "title": "117992671_164992535183035_5945604924811294327_n.jpg",
-      "imageUrl": "/uploads/images/1781067646339-117992671-164992535183035-5945604924811294327-n.jpg",
+      "imageUrl": "/images/enterprises/enterprise-2.jpg",
       "category": "Office",
       "createdAt": "2026-06-10T05:00:51.932Z",
       "updatedAt": "2026-06-10T05:00:51.932Z"
@@ -398,7 +398,7 @@
     {
       "id": "cmq7lp0f50007pwsul8gn82vh",
       "title": "Press-Release-@-The-Daily-Ittefaq_RCG-MOU-Mission-Extreme-768x1099.png",
-      "imageUrl": "/uploads/images/1781067646274-press-release-the-daily-ittefaq-rcg-mou-mission-extreme-768x1099.png",
+      "imageUrl": "/images/enterprises/enterprise-3.jpg",
       "category": "Office",
       "createdAt": "2026-06-10T05:00:52.961Z",
       "updatedAt": "2026-06-10T05:00:52.961Z"
@@ -406,7 +406,7 @@
     {
       "id": "cmq7lp0wa0008pwsuk4r19yne",
       "title": "RCG-Annual-Festival-2020.png",
-      "imageUrl": "/uploads/images/1781067646324-rcg-annual-festival-2020.png",
+      "imageUrl": "/images/enterprises/enterprise-4.jpg",
       "category": "Office",
       "createdAt": "2026-06-10T05:00:53.578Z",
       "updatedAt": "2026-06-10T05:00:53.578Z"
@@ -414,7 +414,7 @@
     {
       "id": "cmq7lp1d00009pwsue6luhgxk",
       "title": "Doinik-Purbancol-768x1280.png",
-      "imageUrl": "/uploads/images/1781067646591-doinik-purbancol-768x1280.png",
+      "imageUrl": "/images/enterprises/enterprise-5.jpg",
       "category": "Office",
       "createdAt": "2026-06-10T05:00:54.180Z",
       "updatedAt": "2026-06-10T05:00:54.180Z"
@@ -422,7 +422,7 @@
     {
       "id": "cmq7lp1ti000apwsufaxt3kpv",
       "title": "64301121_965360313855898_447233698991964160_n-768x379.jpg",
-      "imageUrl": "/uploads/images/1781067646598-64301121-965360313855898-447233698991964160-n-768x379.jpg",
+      "imageUrl": "/images/enterprises/enterprise-6.jpg",
       "category": "Office",
       "createdAt": "2026-06-10T05:00:54.774Z",
       "updatedAt": "2026-06-10T05:00:54.774Z"
@@ -430,7 +430,7 @@
     {
       "id": "cmq7lp2aa000bpwsu5u5qt5xt",
       "title": "Interview-@-Somoy-TV-01-768x599.jpeg",
-      "imageUrl": "/uploads/images/1781067646675-interview-somoy-tv-01-768x599.jpeg",
+      "imageUrl": "/images/rc-property-projects/rc-rivery-village.jpg",
       "category": "Office",
       "createdAt": "2026-06-10T05:00:55.378Z",
       "updatedAt": "2026-06-10T05:00:55.378Z"
@@ -438,7 +438,7 @@
     {
       "id": "cmq7lp2rl000cpwsubvoc2mfk",
       "title": "1-2-768x1200.png",
-      "imageUrl": "/uploads/images/1781067646689-1-2-768x1200.png",
+      "imageUrl": "/images/rc-property-projects/rc-south-valley.jpg",
       "category": "Office",
       "createdAt": "2026-06-10T05:00:56.001Z",
       "updatedAt": "2026-06-10T05:00:56.001Z"
@@ -446,7 +446,7 @@
     {
       "id": "cmq7lxui5000dpwsu7h86ddrt",
       "title": "RCG Annual General Meeting  Picnic 2022",
-      "imageUrl": "/uploads/images/1781068057819-273433760-1699349157123673-8805095230706646074-n-768x512.jpg",
+      "imageUrl": "/images/rc-property-projects/rc-bondhujon-abashon.jpg",
       "category": "Meeting",
       "createdAt": "2026-06-10T05:07:45.197Z",
       "updatedAt": "2026-06-10T05:07:45.197Z"
@@ -454,7 +454,7 @@
     {
       "id": "cmq7lz5i0000epwsu0q8ah09b",
       "title": "RCG Annual General Meeting  Picnic 2021 At Cox’s Bazar And Teknaf .",
-      "imageUrl": "/uploads/images/1781068116545-155043015-1461988640859727-7012366997199582258-n-768x576.jpg",
+      "imageUrl": "/images/rc-property-projects/rc-maya-kanon.jpg",
       "category": "Meeting",
       "createdAt": "2026-06-10T05:08:46.104Z",
       "updatedAt": "2026-06-10T05:08:46.104Z"
@@ -531,15 +531,15 @@
       "id": "cmrd9j67q0000e6llum6xbkv4",
       "title": "Real Capita Group Launches Updated Website",
       "slug": "real-capita-group-launches-updated-website",
-      "excerpt": "Real Capita Group has updated its digital presence with a CMS-powered website.",
-      "content": "This is a test blog post for validating the dynamic blog CMS.\nEdited during runtime verification.",
+      "excerpt": "Real Capita Group has updated its digital presence with a CMS-powered corporate website.",
+      "content": "Real Capita Group has refreshed its digital presence with a dynamic CMS-powered website. The updated platform supports corporate pages, media updates, blog publishing, career information, and administrative content management from one place.",
       "imageUrl": null,
       "category": "Company Update",
       "status": "published",
-      "isFeatured": false,
+      "isFeatured": true,
       "publishedAt": "2026-07-09T08:46:44.525Z",
-      "metaTitle": null,
-      "metaDescription": null,
+      "metaTitle": "Real Capita Group Launches Updated Website",
+      "metaDescription": "Real Capita Group has updated its official website with CMS-powered publishing and corporate content management.",
       "createdAt": "2026-07-09T08:46:44.535Z",
       "updatedAt": "2026-07-09T08:46:47.374Z"
     }
@@ -611,7 +611,7 @@
       "isActive": true,
       "createdAt": "2026-05-06T15:57:03.289Z",
       "updatedAt": "2026-05-16T18:50:04.945Z",
-      "imageUrl": null,
+      "imageUrl": "/images/enterprises/enterprise-5.jpg",
       "description": null,
       "location": null,
       "websiteUrl": null
@@ -626,7 +626,7 @@
       "isActive": true,
       "createdAt": "2026-05-06T15:57:05.189Z",
       "updatedAt": "2026-05-16T18:50:05.565Z",
-      "imageUrl": null,
+      "imageUrl": "/images/enterprises/enterprise-6.jpg",
       "description": null,
       "location": null,
       "websiteUrl": null
@@ -641,7 +641,7 @@
       "isActive": true,
       "createdAt": "2026-05-06T15:56:57.357Z",
       "updatedAt": "2026-06-10T05:37:26.292Z",
-      "imageUrl": "/uploads/images/1781069844043-02-syl-ad.jpg",
+      "imageUrl": "/images/enterprises/enterprise-1.jpg",
       "description": null,
       "location": null,
       "websiteUrl": null
@@ -656,7 +656,7 @@
       "isActive": true,
       "createdAt": "2026-05-06T15:56:58.090Z",
       "updatedAt": "2026-06-10T05:38:55.661Z",
-      "imageUrl": "/uploads/images/1781069933103-rc-daira-noor-01.jpg",
+      "imageUrl": "/images/enterprises/enterprise-2.jpg",
       "description": null,
       "location": null,
       "websiteUrl": "https://rcholdingsltd.com/"
@@ -671,7 +671,7 @@
       "isActive": true,
       "createdAt": "2026-05-06T15:56:59.010Z",
       "updatedAt": "2026-06-10T05:43:01.917Z",
-      "imageUrl": "/uploads/images/1781070177427-rcob-bg.jpg",
+      "imageUrl": "/images/enterprises/enterprise-3.jpg",
       "description": null,
       "location": null,
       "websiteUrl": null
@@ -686,7 +686,7 @@
       "isActive": true,
       "createdAt": "2026-05-06T15:57:00.936Z",
       "updatedAt": "2026-06-10T05:48:40.278Z",
-      "imageUrl": "/uploads/images/1781070517196-resda-02.png",
+      "imageUrl": "/images/enterprises/enterprise-4.jpg",
       "description": null,
       "location": null,
       "websiteUrl": null
@@ -891,13 +891,6 @@
           "alt": "RC Rivery Village project location image",
           "src": "/images/enterprises/enterprise-2.jpg",
           "type": "image"
-        },
-        {
-          "id": 4,
-          "alt": "RC Rivery Village project video",
-          "src": "/uploads/videos/1776970739031-whatsapp-video-2026-04-24-at-00.56.38.mp4",
-          "type": "video",
-          "thumbnail": "/images/rc-property-projects/rc-rivery-village.jpg"
         }
       ],
       "profilePdf": "/voucher/commercial-space-gulshan.pdf",
@@ -940,13 +933,6 @@
           "alt": "RC South Valley project location image",
           "src": "/images/enterprises/enterprise-1.jpg",
           "type": "image"
-        },
-        {
-          "id": 4,
-          "alt": "RC South Valley project video",
-          "src": "/uploads/videos/1776970794056-whatsapp-video-2026-04-24-at-00.56.38.mp4",
-          "type": "video",
-          "thumbnail": "/images/rc-property-projects/rc-south-valley.jpg"
         }
       ],
       "profilePdf": "/voucher/family-apartment-mirpur.pdf",
@@ -989,13 +975,6 @@
           "alt": "RC Bondhujon Abashon project location image",
           "src": "/images/enterprises/enterprise-1.jpg",
           "type": "image"
-        },
-        {
-          "id": 4,
-          "alt": "RC Bondhujon Abashon project video",
-          "src": "/uploads/videos/1776971242477-whatsapp-video-2026-04-24-at-00.56.38.mp4",
-          "type": "video",
-          "thumbnail": "/images/rc-property-projects/rc-bondhujon-abashon.jpg"
         }
       ],
       "profilePdf": "/voucher/green-city-residential-plot.pdf",
@@ -1032,13 +1011,6 @@
           "alt": "RC Priyojan Grihayan Prokolpo gallery image",
           "src": "/images/hero/slide-2.jpg",
           "type": "image"
-        },
-        {
-          "id": 3,
-          "alt": "RC Priyojan Grihayan Prokolpo project video",
-          "src": "/uploads/videos/1776970730823-whatsapp-video-2026-04-24-at-00.56.38.mp4",
-          "type": "video",
-          "thumbnail": "/images/enterprises/enterprise-6.jpg"
         }
       ],
       "profilePdf": "/voucher/commercial-space-gulshan.pdf",
@@ -1056,7 +1028,7 @@
       "slug": "rc-maya-kanon",
       "name": "RC Maya Kanon",
       "location": "Abdullahpur, Keranigonj, Dhaka",
-      "image": "/uploads/images/1781069996678-71389013-726440544449731-5597208492613042176-n.png",
+      "image": "/images/rc-property-projects/rc-maya-kanon.jpg",
       "shortDescription": "A planned residential land project focused on organized development and long-term location value.",
       "fullDescription": [
         "RC Maya Kanon is a selected RC Property project located in Abdullahpur, Keranigonj, Dhaka.",
@@ -1081,13 +1053,6 @@
           "alt": "RC Maya Kanon project location image",
           "src": "/images/enterprises/enterprise-1.jpg",
           "type": "image"
-        },
-        {
-          "id": 4,
-          "alt": "RC Maya Kanon project video",
-          "src": "/uploads/videos/1776970698427-whatsapp-video-2026-04-24-at-00.56.38.mp4",
-          "type": "video",
-          "thumbnail": "/images/rc-property-projects/rc-maya-kanon.jpg"
         }
       ],
       "profilePdf": "/voucher/lake-view-apartment-dhaka.pdf",
@@ -1105,7 +1070,7 @@
       "slug": "rc-santi-kutir",
       "name": "RC Santi Kutir",
       "location": "Abdullahpur, Keranigonj, Dhaka",
-      "image": "/uploads/images/1780939197740-rc-shanti-kutir.png",
+      "image": "/images/enterprises/enterprise-2.jpg",
       "shortDescription": "A compact apartment development focused on peaceful residential living and reliable project planning.",
       "fullDescription": [
         "RC Santi Kutir is a residential apartment project under RC Holdings.",
@@ -1124,13 +1089,6 @@
           "alt": "RC Santi Kutir gallery image",
           "src": "/images/hero/slide-1.jpg",
           "type": "image"
-        },
-        {
-          "id": 3,
-          "alt": "RC Santi Kutir project video",
-          "src": "/uploads/videos/1776970769714-whatsapp-video-2026-04-24-at-00.56.38.mp4",
-          "type": "video",
-          "thumbnail": "/images/enterprises/enterprise-2.jpg"
         }
       ],
       "profilePdf": "/voucher/family-apartment-mirpur.pdf",
@@ -1165,13 +1123,6 @@
           "alt": "RC Maya Kanon Eco Village gallery image",
           "src": "/images/hero/slide-4.jpg",
           "type": "image"
-        },
-        {
-          "id": 3,
-          "alt": "RC Maya Kanon Eco Village project video",
-          "src": "/uploads/videos/1776976517322-whatsapp-video-2026-04-24-at-00.56.38.mp4",
-          "type": "video",
-          "thumbnail": "/images/enterprises/enterprise-6.jpg"
         }
       ],
       "profilePdf": "/voucher/lake-view-apartment-dhaka.pdf",

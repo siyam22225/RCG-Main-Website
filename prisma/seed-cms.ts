@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import bcrypt from "bcryptjs";
 import "dotenv/config";
 import { PrismaClient } from "@prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
@@ -17,6 +18,7 @@ const adapter = new PrismaPg({
 const prisma = new PrismaClient({ adapter });
 
 const seedPath = path.join(process.cwd(), "prisma", "seed-data", "cms-export.json");
+const ADMIN_PASSWORD_MIN_LENGTH = 12;
 
 type Row = Record<string, any>;
 
@@ -46,6 +48,102 @@ function updateOnly(row: Row): Row {
   delete next.createdAt;
   delete next.updatedAt;
   return next;
+}
+
+function readAdminSeedConfig() {
+  const email = process.env.CREATE_ADMIN_EMAIL?.trim().toLowerCase();
+  const password = process.env.CREATE_ADMIN_PASSWORD;
+  const name = process.env.CREATE_ADMIN_NAME?.trim();
+  const overwrite = process.env.CREATE_ADMIN_OVERWRITE === "true";
+
+  if (!email && !password) {
+    return null;
+  }
+
+  if (!email || !password) {
+    throw new Error(
+      "CREATE_ADMIN_EMAIL and CREATE_ADMIN_PASSWORD must both be set to seed an admin user."
+    );
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    throw new Error("CREATE_ADMIN_EMAIL must be a valid email address.");
+  }
+
+  if (password.length < ADMIN_PASSWORD_MIN_LENGTH) {
+    throw new Error(
+      `CREATE_ADMIN_PASSWORD must be at least ${ADMIN_PASSWORD_MIN_LENGTH} characters.`
+    );
+  }
+
+  return {
+    email,
+    password,
+    name: name || null,
+    overwrite,
+  };
+}
+
+async function seedAdminUser() {
+  const adminConfig = readAdminSeedConfig();
+
+  if (!adminConfig) {
+    console.log(
+      "AdminUser: skipped because CREATE_ADMIN_EMAIL and CREATE_ADMIN_PASSWORD are not set."
+    );
+    return;
+  }
+
+  const existingAdmin = await prisma.adminUser.findUnique({
+    where: { email: adminConfig.email },
+  });
+
+  if (existingAdmin && !adminConfig.overwrite) {
+    await prisma.adminUser.update({
+      where: { email: adminConfig.email },
+      data: {
+        name: adminConfig.name ?? existingAdmin.name,
+        role: "super_admin",
+        isProtected: true,
+        isActive: true,
+        isHiddenFromAdminPanel: false,
+      },
+    });
+
+    console.log(
+      "AdminUser: updated existing protected super admin without changing password."
+    );
+    return;
+  }
+
+  const hashedPassword = await bcrypt.hash(adminConfig.password, 10);
+
+  await prisma.adminUser.upsert({
+    where: { email: adminConfig.email },
+    update: {
+      password: hashedPassword,
+      name: adminConfig.name ?? existingAdmin?.name ?? null,
+      role: "super_admin",
+      isProtected: true,
+      isActive: true,
+      isHiddenFromAdminPanel: false,
+    },
+    create: {
+      email: adminConfig.email,
+      password: hashedPassword,
+      name: adminConfig.name,
+      role: "super_admin",
+      isProtected: true,
+      isActive: true,
+      isHiddenFromAdminPanel: false,
+    },
+  });
+
+  console.log(
+    existingAdmin
+      ? "AdminUser: password updated for configured protected super admin."
+      : "AdminUser: created configured protected super admin."
+  );
 }
 
 async function upsertRows(
@@ -79,6 +177,8 @@ async function upsertRows(
 
 async function main() {
   const data = readSeedData();
+
+  await seedAdminUser();
 
   await upsertRows("officeSetting", data.officeSetting, (row) => ({ key: row.key }));
   await upsertRows("socialLink", data.socialLink, (row) => ({ label: row.label }));

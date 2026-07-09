@@ -14,7 +14,7 @@
     "lint": "next lint",
     "prisma:generate": "prisma generate",
     "postinstall": "prisma generate",
-    "seed": "tsx prisma/seed.ts",
+    "seed": "tsx prisma/seed-cms.ts",
     "admin:create": "node scripts/create-admin.mjs",
     "seed:cms": "tsx prisma/seed-cms.ts"
   },

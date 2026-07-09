@@ -34,9 +34,20 @@ A fresh clone needs three things:
 
 1. Source code from GitHub.
 2. A valid PostgreSQL database connection in `.env`.
-3. Seeded CMS data using `npm run seed` and `npm run seed:cms`.
+3. Seeded CMS data and an admin account using `npm run seed:cms`.
 
 Runtime uploads under `public/uploads` are ignored by Git. Missing uploaded media should fall back cleanly in the UI, but production uploads still need separate backup/restore handling.
+
+Quick local setup command sequence:
+
+```bash
+npm install
+cp .env.example .env
+npx prisma migrate deploy
+npx prisma generate
+npm run seed:cms
+npm run dev
+```
 
 ---
 
@@ -62,11 +73,11 @@ Edit `.env` and set at least:
 
 ```env
 DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE?schema=public"
-ADMIN_JWT_SECRET="replace-with-a-long-random-secret"
+ADMIN_JWT_SECRET="replace-with-a-long-random-secret-at-least-32-characters"
 NEXT_PUBLIC_SITE_URL="http://localhost:3000"
 
 CREATE_ADMIN_EMAIL="admin@realcapita.local"
-CREATE_ADMIN_PASSWORD="AdminPassword123"
+CREATE_ADMIN_PASSWORD="ChangeMeBeforeProduction123!"
 CREATE_ADMIN_NAME="Super Admin"
 CREATE_ADMIN_OVERWRITE=false
 ```
@@ -82,26 +93,20 @@ Use your actual PostgreSQL credentials.
 ### 3. Install dependencies
 
 ```bash
-npm ci
+npm install
 ```
 
 ### 4. Prepare Prisma and database
 
 ```bash
 npx prisma validate
-npx prisma generate
 npx prisma migrate deploy
+npx prisma generate
 ```
 
 ### 5. Seed required data
 
-Create or update the first admin account from the `CREATE_ADMIN_*` values in `.env`:
-
-```bash
-npm run seed
-```
-
-Restore the portable CMS/site content used by the website:
+Create or update the first admin account from the `CREATE_ADMIN_*` values in `.env`, then restore the portable CMS/site content used by the website:
 
 ```bash
 npm run seed:cms
@@ -151,11 +156,11 @@ Edit `.env` and set at least:
 
 ```env
 DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE?schema=public"
-ADMIN_JWT_SECRET="replace-with-a-long-random-secret"
+ADMIN_JWT_SECRET="replace-with-a-long-random-secret-at-least-32-characters"
 NEXT_PUBLIC_SITE_URL="http://localhost:3000"
 
 CREATE_ADMIN_EMAIL="admin@realcapita.local"
-CREATE_ADMIN_PASSWORD="AdminPassword123"
+CREATE_ADMIN_PASSWORD="ChangeMeBeforeProduction123!"
 CREATE_ADMIN_NAME="Super Admin"
 CREATE_ADMIN_OVERWRITE=false
 ```
@@ -165,33 +170,27 @@ For a local PostgreSQL database, use your own username, password, port, and data
 ### 3. Install dependencies
 
 ```powershell
-npm ci
+npm install
 ```
 
-If `npm ci` fails with a certificate verification error on Windows or shared hosting, retry with the system certificate store:
+If `npm install` fails with a certificate verification error on Windows or shared hosting, retry with the system certificate store:
 
 ```powershell
 $env:NODE_OPTIONS="--use-system-ca"
-npm ci --no-audit
+npm install --no-audit
 ```
 
 ### 4. Prepare Prisma and database
 
 ```powershell
 npx prisma validate
-npx prisma generate
 npx prisma migrate deploy
+npx prisma generate
 ```
 
 ### 5. Seed required data
 
-Create or update the first admin account from the `CREATE_ADMIN_*` values in `.env`:
-
-```powershell
-npm run seed
-```
-
-Restore the portable CMS/site content used by the website:
+Create or update the first admin account from the `CREATE_ADMIN_*` values in `.env`, then restore the portable CMS/site content used by the website:
 
 ```powershell
 npm run seed:cms
@@ -231,8 +230,8 @@ Set values in `.env` for local development or in the hosting control panel for p
 | `NODE_ENV` | Production | Set to `production` on the host. |
 | `PORT` | Production | Provided by the Node.js hosting runtime. |
 | `HOSTNAME` | Optional | Bind host for `server.js`; defaults to `127.0.0.1`. |
-| `CREATE_ADMIN_EMAIL` | Temporary | First-admin bootstrap email. |
-| `CREATE_ADMIN_PASSWORD` | Temporary | First-admin bootstrap password. |
+| `CREATE_ADMIN_EMAIL` | Local setup | First-admin bootstrap email used by `npm run seed:cms` and `npm run admin:create`. |
+| `CREATE_ADMIN_PASSWORD` | Local setup | First-admin bootstrap password used by `npm run seed:cms` and `npm run admin:create`; change the example before shared or production use. |
 | `CREATE_ADMIN_NAME` | Optional temporary | First-admin display name. |
 | `CREATE_ADMIN_OVERWRITE` | Optional temporary | Set to `true` only for an intentional admin password reset. |
 
@@ -241,13 +240,12 @@ Set values in `.env` for local development or in the hosting control panel for p
 ## Common Commands
 
 ```bash
-npm ci
+npm install
 npm run dev
 npm run dev:turbopack
 npx prisma validate
-npx prisma generate
 npx prisma migrate deploy
-npm run seed
+npx prisma generate
 npm run seed:cms
 npm run build
 npm audit
