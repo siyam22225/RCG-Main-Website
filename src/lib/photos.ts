@@ -1,7 +1,8 @@
 import { prisma } from "@/lib/prisma";
+import { safePublicMediaUrl } from "@/lib/public-media";
 
 export async function getAllPhotos() {
-  return prisma.photo.findMany({
+  const photos = await prisma.photo.findMany({
     orderBy: { createdAt: "desc" },
     select: {
       id: true,
@@ -10,4 +11,9 @@ export async function getAllPhotos() {
       category: true,
     },
   });
+
+  return photos.map((photo) => ({
+    ...photo,
+    imageUrl: safePublicMediaUrl(photo.imageUrl),
+  }));
 }

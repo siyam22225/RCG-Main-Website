@@ -34,6 +34,27 @@ export default async function AllNewsPage() {
           margin: 0 auto;
         }
 
+        .news-page-header {
+          margin: 0 0 30px;
+        }
+
+        .news-page-header p {
+          margin: 0 0 10px;
+          color: #15803d;
+          font-size: 12px;
+          font-weight: 900;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+        }
+
+        .news-page-header h1 {
+          margin: 0;
+          color: #0f172a;
+          font-size: clamp(36px, 5vw, 54px);
+          line-height: 1;
+          font-weight: 900;
+        }
+
         .news-grid {
           display: grid;
           grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -228,6 +249,11 @@ export default async function AllNewsPage() {
         }
       `}</style>
       <div className="all-news-container">
+        <div className="news-page-header">
+          <p>Media Updates</p>
+          <h1>Latest News</h1>
+        </div>
+
         {newsItems.length === 0 ? (
           <div className="empty-card">
             <h2>No news available</h2>

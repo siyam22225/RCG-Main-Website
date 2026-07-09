@@ -601,7 +601,7 @@ export default function Footer() {
 
         <div className="rcgFooterBottom">
           <p className="rcgCopyright">
-            Â© 2026 Real Capita Group. All rights reserved.
+            © 2026 Real Capita Group. All rights reserved.
           </p>
 
           <div className="rcgFooterSocials">

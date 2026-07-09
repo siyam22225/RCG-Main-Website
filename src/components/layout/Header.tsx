@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
@@ -19,6 +19,15 @@ type ClientLoginSetting = {
 type HeaderLogoSetting = {
   logoUrl: string;
   altText: string;
+};
+
+type PageVisibilitySetting = {
+  formerChairman: boolean;
+};
+
+type OfficeContactSetting = {
+  email: string;
+  phone: string;
 };
 
 type BusinessVerticalItem = {
@@ -43,7 +52,6 @@ const galleryItems = [
 
 const mediaItems = [
   { label: "News", href: "/media/news" },
-  { label: "Publication", href: "/media/publication" },
   { label: "Blogs", href: "/media/blogs" },
 ];
 
@@ -69,6 +77,52 @@ function normalizeEnterprises(data: unknown): EnterpriseMenuItem[] {
     .filter((item) => item.slug && item.name && item.isActive !== false);
 }
 
+function normalizeBusinessVerticalGroups(data: unknown): BusinessVerticalGroup[] {
+  const source = Array.isArray(data)
+    ? data
+    : Array.isArray((data as { categories?: unknown[] })?.categories)
+      ? (data as { categories: unknown[] }).categories
+      : [];
+
+  return source
+    .map((group) => {
+      const category = group as {
+        id?: string | number;
+        label?: string;
+        items?: unknown[];
+        isActive?: boolean;
+      };
+
+      return {
+        id: String(category.id || category.label || ""),
+        label: String(category.label || "").trim(),
+        items: Array.isArray(category.items)
+          ? category.items
+              .map((item) => {
+                const verticalItem = item as {
+                  id?: string | number;
+                  label?: string;
+                  enterpriseSlug?: string | null;
+                  targetUrl?: string | null;
+                  isActive?: boolean;
+                };
+
+                return {
+                  id: String(verticalItem.id || verticalItem.label || ""),
+                  label: String(verticalItem.label || "").trim(),
+                  enterpriseSlug: verticalItem.enterpriseSlug || null,
+                  targetUrl: verticalItem.targetUrl || null,
+                  isActive: verticalItem.isActive,
+                };
+              })
+              .filter((item) => item.label && item.isActive !== false)
+          : [],
+        isActive: category.isActive,
+      };
+    })
+    .filter((group) => group.label && group.isActive !== false);
+}
+
 export default function Header() {
   const [showAboutMenu, setShowAboutMenu] = useState(false);
   const [showMessageMenu, setShowMessageMenu] = useState(false);
@@ -88,7 +142,10 @@ export default function Header() {
   const [dynamicBusinessVerticalGroups, setDynamicBusinessVerticalGroups] = useState<BusinessVerticalGroup[]>([]);
 
   const [clientLogin, setClientLogin] = useState<ClientLoginSetting | null>(null);
-  const [topHeaderContact, setTopHeaderContact] = useState({
+  const [pageVisibility, setPageVisibility] = useState<PageVisibilitySetting>({
+    formerChairman: false,
+  });
+  const [topHeaderContact, setTopHeaderContact] = useState<OfficeContactSetting>({
     email: "",
     phone: "",
   });
@@ -109,13 +166,23 @@ export default function Header() {
 
     async function loadHeaderSettings() {
       try {
-        const response = await fetch("/api/header-settings");
+        const response = await fetch("/api/header-settings", { cache: "no-store" });
 
         const json = await response.json();
 
         if (!mounted) return;
 
         setEnterpriseItems(normalizeEnterprises(json?.enterprises || []));
+        setPageVisibility({
+          formerChairman: json?.pageVisibility?.formerChairman !== false,
+        });
+        setTopHeaderContact({
+          email: String(json?.officeContact?.email || "").trim(),
+          phone: String(json?.officeContact?.phone || "").trim(),
+        });
+        setDynamicBusinessVerticalGroups(
+          normalizeBusinessVerticalGroups(json?.businessVerticalGroups || [])
+        );
 
         if (json?.mainLogo?.logoUrl) {
           setHeaderLogo({
@@ -133,58 +200,6 @@ export default function Header() {
           });
         } else {
           setClientLogin(null);
-        }
-
-        try {
-          const officeResponse = await fetch("/api/office-settings");
-
-          const officeJson = await officeResponse.json();
-
-          if (!mounted) return;
-
-          const firstOffice = Array.isArray(officeJson?.data)
-            ? officeJson.data[0]
-            : null;
-
-          setTopHeaderContact({
-            email: String(firstOffice?.email || "").trim(),
-            phone: String(firstOffice?.phone || "").trim(),
-          });
-        } catch (error) {
-          console.error("HEADER_TOP_CONTACT_LOAD_ERROR", error);
-        }
-
-        try {
-          const verticalResponse = await fetch("/api/business-verticals");
-
-          const verticalJson = await verticalResponse.json();
-
-          if (!mounted) return;
-
-          const categories = Array.isArray(verticalJson?.categories)
-            ? verticalJson.categories
-            : [];
-
-          const mappedGroups = categories
-            .map((category: any) => ({
-              id: String(category.id || category.label || ""),
-              label: String(category.label || "").trim(),
-              items: Array.isArray(category.items)
-                ? category.items
-                    .map((item: any) => ({
-                      id: String(item.id || item.label || ""),
-                      label: String(item.label || "").trim(),
-                      enterpriseSlug: item.enterpriseSlug || null,
-                      targetUrl: item.targetUrl || null,
-                    }))
-                    .filter((item: BusinessVerticalItem) => item.label)
-                : [],
-            }))
-            .filter((group: BusinessVerticalGroup) => group.label);
-
-          setDynamicBusinessVerticalGroups(mappedGroups);
-        } catch (error) {
-          console.error("BUSINESS_VERTICAL_LOAD_ERROR", error);
         }
       } catch (error) {
         console.error("HEADER_SETTINGS_LOAD_ERROR", error);
@@ -495,6 +510,8 @@ export default function Header() {
 
     return label;
   };
+
+  const hasTopHeaderContact = Boolean(topHeaderContact.email || topHeaderContact.phone);
 
   return (
     <header className="header rcgHeader"><style>{`
@@ -892,54 +909,56 @@ export default function Header() {
         }
         /* RCG_TOP_HEADER_RIGHT_ALIGN_END */
       `}</style>
-      <div
-        className="rcgTopHeaderBar"
-        style={{
-          background: "linear-gradient(90deg, #075c9d 0%, #159447 100%)",
-          color: "#ffffff",
-        }}
-      >
+      {hasTopHeaderContact ? (
         <div
-          className="container"
+          className="rcgTopHeaderBar"
           style={{
-            minHeight: "38px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "36px",
-            flexWrap: "wrap",
-            fontSize: "13px",
-            fontWeight: 700,
-            fontFamily: "Arial, Helvetica, sans-serif",
+            background: "linear-gradient(90deg, #075c9d 0%, #159447 100%)",
+            color: "#ffffff",
           }}
         >
-          <a
-            href={topHeaderContact.email ? `mailto:${topHeaderContact.email}` : "#"}
+          <div
+            className="container"
             style={{
-              color: "#ffffff",
-              textDecoration: "none",
-              fontWeight: 800,
+              minHeight: "38px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "36px",
+              flexWrap: "wrap",
+              fontSize: "13px",
+              fontWeight: 700,
+              fontFamily: "Arial, Helvetica, sans-serif",
             }}
           >
-            E-mail: {topHeaderContact.email}
-          </a>
+            {topHeaderContact.email ? (
+              <a
+                href={`mailto:${topHeaderContact.email}`}
+                style={{
+                  color: "#ffffff",
+                  textDecoration: "none",
+                  fontWeight: 800,
+                }}
+              >
+                E-mail: {topHeaderContact.email}
+              </a>
+            ) : null}
 
-          <a
-            href={
-              topHeaderContact.phone
-                ? `tel:${topHeaderContact.phone.replace(/[^+\\d]/g, "")}`
-                : "#"
-            }
-            style={{
-              color: "#ffffff",
-              textDecoration: "none",
-              fontWeight: 800,
-            }}
-          >
-            Hotline: {topHeaderContact.phone}
-          </a>
+            {topHeaderContact.phone ? (
+              <a
+                href={`tel:${topHeaderContact.phone.replace(/[^+\\d]/g, "")}`}
+                style={{
+                  color: "#ffffff",
+                  textDecoration: "none",
+                  fontWeight: 800,
+                }}
+              >
+                Hotline: {topHeaderContact.phone}
+              </a>
+            ) : null}
+          </div>
         </div>
-      </div>
+      ) : null}
 
       <div className="container header-inner rcgHeaderInner">
         <Link
@@ -1075,17 +1094,19 @@ export default function Header() {
                   Mission Vision &amp; Values
                 </Link>
 
-                <Link
-                  href="/message/former-chairman"
-                  onClick={() => setShowAboutMenu(false)}
-                  className="dropdown-sub-link"
-                  style={{
-                    ...compactLinkStyle,
-                    borderBottom: "1px solid rgba(15,23,42,0.08)",
-                  }}
-                >
-                  Chairman Message
-                </Link>
+                {pageVisibility.formerChairman ? (
+                  <Link
+                    href="/message/former-chairman"
+                    onClick={() => setShowAboutMenu(false)}
+                    className="dropdown-sub-link"
+                    style={{
+                      ...compactLinkStyle,
+                      borderBottom: "1px solid rgba(15,23,42,0.08)",
+                    }}
+                  >
+                    Chairman Message
+                  </Link>
+                ) : null}
 
                 <Link
                   href="/message/board-of-directors/mohammad-arifuzzaman"
@@ -1377,7 +1398,21 @@ export default function Header() {
                 onClick={() => setMobileMenuOpen(false)}
                 aria-label="Close menu"
               >
-                ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M18 6 6 18" />
+                  <path d="M6 6l12 12" />
+                </svg>
               </button>
             </div>
 
@@ -1411,12 +1446,14 @@ export default function Header() {
                     Mission Vision &amp; Values
                   </Link>
 
-                  <Link
-                    href="/message/former-chairman"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Chairman Message
-                  </Link>
+                  {pageVisibility.formerChairman ? (
+                    <Link
+                      href="/message/former-chairman"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Chairman Message
+                    </Link>
+                  ) : null}
 
                   <Link
                     href="/message/board-of-directors/mohammad-arifuzzaman"

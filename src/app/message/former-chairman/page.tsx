@@ -1,4 +1,8 @@
-import { prisma } from "@/lib/prisma";
+import { redirect } from "next/navigation";
+import {
+  getEffectiveFormerChairmanMessage,
+  nonEmpty,
+} from "@/lib/formerChairman";
 
 export const dynamic = "force-dynamic";
 
@@ -52,23 +56,25 @@ function parseProfileItems(value: string | null | undefined): Array<[string, str
 }
 
 export default async function FormerChairmanPage() {
-  const cmsSettings = await prisma.formerChairmanMessage.findFirst({
-    orderBy: { createdAt: "asc" },
-  });
+  const cmsSettings = await getEffectiveFormerChairmanMessage();
 
-  const settings = cmsSettings?.isActive === false ? null : cmsSettings;
+  if (cmsSettings?.isActive === false) {
+    redirect("/message");
+  }
 
-  const name = settings?.name?.trim() || "Late Alhaj Md. Anower Hossain";
-  const designation = settings?.designation?.trim() || "1960 – 2020";
-  const image = settings?.image?.trim() || "/images/message/former-chairman.jpg";
-  const pageTitle = settings?.title?.trim() || "Former Chairman Message";
-  const eyebrow = settings?.eyebrow?.trim() || "Who We Are";
+  const settings = cmsSettings;
+
+  const name = nonEmpty(settings?.name) || "Late Alhaj Md. Anower Hossain";
+  const designation = nonEmpty(settings?.designation) || "1960 – 2020";
+  const image = nonEmpty(settings?.image) || "/images/message/former-chairman.jpg";
+  const pageTitle = nonEmpty(settings?.title) || "Former Chairman Message";
+  const eyebrow = nonEmpty(settings?.eyebrow) || "Who We Are";
   const introLead =
-    settings?.introLead?.trim() ||
+    nonEmpty(settings?.introLead) ||
     "A vision for planned development, responsible growth, and reliable living opportunities for future generations.";
-  const articleLabel = settings?.articleLabel?.trim() || "Message";
+  const articleLabel = nonEmpty(settings?.articleLabel) || "Message";
   const articleHeading =
-    settings?.articleHeading?.trim() ||
+    nonEmpty(settings?.articleHeading) ||
     "Building with vision, trust, and long-term responsibility.";
 
   const messageParagraphs = splitParagraphs(settings?.messageBody);

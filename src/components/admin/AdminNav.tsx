@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import styles from "./AdminNav.module.css";
 
@@ -25,7 +25,6 @@ const groupedItems = [
     label: "Media",
     items: [
       { label: "News", href: "/admin/news" },
-      { label: "Publication", href: "/admin/publication" },
       { label: "Blogs", href: "/admin/blogs" },
     ],
   },
@@ -45,12 +44,46 @@ export default function AdminNav() {
   const router = useRouter();
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     [...singleItems, ...groupedItems.flatMap((group) => group.items)].forEach((item) => {
       router.prefetch(item.href);
     });
   }, [router]);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimerRef.current) {
+        clearTimeout(closeTimerRef.current);
+      }
+    };
+  }, []);
+
+  function clearCloseTimer() {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+  }
+
+  function handleGroupEnter(label: string) {
+    clearCloseTimer();
+    setOpenGroup(label);
+  }
+
+  function handleGroupLeave() {
+    clearCloseTimer();
+    closeTimerRef.current = setTimeout(() => {
+      setOpenGroup(null);
+      closeTimerRef.current = null;
+    }, 200);
+  }
+
+  function toggleGroup(label: string) {
+    clearCloseTimer();
+    setOpenGroup((current) => (current === label ? null : label));
+  }
 
   function goTo(href: string) {
     if (pathname === href) return;
@@ -87,10 +120,15 @@ export default function AdminNav() {
         ))}
 
         {groupedItems.map((group) => (
-          <div key={group.label} className={styles.adminNavGroup}>
+          <div
+            key={group.label}
+            className={styles.adminNavGroup}
+            onMouseEnter={() => handleGroupEnter(group.label)}
+            onMouseLeave={handleGroupLeave}
+          >
             <button
               type="button"
-              onClick={() => setOpenGroup(openGroup === group.label ? null : group.label)}
+              onClick={() => toggleGroup(group.label)}
               className={`${styles.adminNavForceItem} ${
                 isGroupActive(pathname, group.items) ? styles.active : ""
               }`}
@@ -98,8 +136,12 @@ export default function AdminNav() {
               {group.label} ▾
             </button>
 
-            {openGroup === group.label || isGroupActive(pathname, group.items) ? (
-              <div className={styles.adminNavDropdown}>
+            {openGroup === group.label ? (
+              <div
+                className={styles.adminNavDropdown}
+                onMouseEnter={() => handleGroupEnter(group.label)}
+                onMouseLeave={handleGroupLeave}
+              >
                 {group.items.map((item) => (
                   <button
                     key={item.href}

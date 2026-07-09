@@ -6,7 +6,7 @@ import { useMemo, useState } from "react";
 type PhotoItem = {
   id: string;
   title: string;
-  imageUrl: string;
+  imageUrl: string | null;
   category: string | null;
 };
 
@@ -19,11 +19,22 @@ const albums = ["All", "Office", "Event", "Community", "Projects", "Directors"];
 export default function PhotosPageClient({ initialPhotos = [] }: Props) {
   const [activeAlbum, setActiveAlbum] = useState("All");
   const [selectedPhoto, setSelectedPhoto] = useState<PhotoItem | null>(null);
+  const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
 
   const filteredPhotos = useMemo(() => {
     if (activeAlbum === "All") return initialPhotos;
     return initialPhotos.filter((photo) => photo.category === activeAlbum);
   }, [activeAlbum, initialPhotos]);
+
+  function markImageUnavailable(id: string) {
+    setFailedImages((current) =>
+      current[id] ? current : { ...current, [id]: true }
+    );
+  }
+
+  function hasAvailableImage(photo: PhotoItem) {
+    return Boolean(photo.imageUrl && !failedImages[photo.id]);
+  }
 
   return (
     <section className="photos-page"><style jsx>{`
@@ -137,6 +148,22 @@ export default function PhotosPageClient({ initialPhotos = [] }: Props) {
 
         .photo-card:hover .photo-image {
           transform: scale(1.04);
+        }
+
+        .image-unavailable {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 18px;
+          text-align: center;
+          color: #64748b;
+          background:
+            linear-gradient(135deg, rgba(226, 232, 240, 0.86), rgba(241, 245, 249, 0.96));
+          font-size: 13px;
+          font-weight: 900;
+          line-height: 1.35;
         }
 
         .photo-info {
@@ -297,15 +324,20 @@ export default function PhotosPageClient({ initialPhotos = [] }: Props) {
                 className="photo-card"
               >
                 <div className="photo-image-wrap">
-                  <Image
-                    src={photo.imageUrl}
-                    alt={photo.title}
-                    fill
-                    className="photo-image"
-                    sizes="(max-width: 640px) 50vw, (max-width: 900px) 33vw, (max-width: 1200px) 25vw, 260px"
-                    loading="lazy"
-                    quality={82}
-                  />
+                  {hasAvailableImage(photo) ? (
+                    <Image
+                      src={photo.imageUrl || ""}
+                      alt={photo.title}
+                      fill
+                      className="photo-image"
+                      sizes="(max-width: 640px) 50vw, (max-width: 900px) 33vw, (max-width: 1200px) 25vw, 260px"
+                      loading="lazy"
+                      quality={82}
+                      onError={() => markImageUnavailable(photo.id)}
+                    />
+                  ) : (
+                    <div className="image-unavailable">Image unavailable</div>
+                  )}
                 </div>
 
                 <div className="photo-info">
@@ -333,14 +365,19 @@ export default function PhotosPageClient({ initialPhotos = [] }: Props) {
             </div>
 
             <div className="modal-image-wrap">
-              <Image
-                src={selectedPhoto.imageUrl}
-                alt={selectedPhoto.title}
-                fill
-                className="modal-image"
-                sizes="min(100vw, 1050px)"
-                quality={90}
-              />
+              {hasAvailableImage(selectedPhoto) ? (
+                <Image
+                  src={selectedPhoto.imageUrl || ""}
+                  alt={selectedPhoto.title}
+                  fill
+                  className="modal-image"
+                  sizes="min(100vw, 1050px)"
+                  quality={90}
+                  onError={() => markImageUnavailable(selectedPhoto.id)}
+                />
+              ) : (
+                <div className="image-unavailable">Image unavailable</div>
+              )}
             </div>
           </div>
         </div>

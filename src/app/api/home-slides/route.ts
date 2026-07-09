@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { safePublicMediaUrl } from "@/lib/public-media";
+
+const FALLBACK_HERO_IMAGE = "/images/hero/slide-1.jpg";
 
 export async function GET() {
   try {
@@ -23,7 +26,10 @@ export async function GET() {
 
     const response = NextResponse.json({
       success: true,
-      data: slides,
+      data: slides.map((slide) => ({
+        ...slide,
+        imageUrl: safePublicMediaUrl(slide.imageUrl, FALLBACK_HERO_IMAGE),
+      })),
     });
     response.headers.set("Cache-Control", "public, max-age=300, stale-while-revalidate=600");
     return response;

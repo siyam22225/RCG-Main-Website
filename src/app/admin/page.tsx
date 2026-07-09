@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import AdminNav from "@/components/admin/AdminNav";
 import styles from "./AdminDashboard.module.css";
 
@@ -19,14 +19,6 @@ const moduleCards: ModuleCard[] = [
     badge: "Media",
     accentClass: "blueAccent",
     icon: "NW",
-  },
-  {
-    title: "Publication",
-    description: "Manage company brochures, profiles, reports, and official documents.",
-    href: "/admin/publication",
-    badge: "Media",
-    accentClass: "purpleAccent",
-    icon: "PB",
   },
   {
     title: "Blogs",

@@ -2,19 +2,12 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireAdminApi } from "@/lib/admin-api-auth";
 import { requireSameOriginAdminRequest } from "@/lib/admin-request-guard";
+import {
+  getOrCreateEffectiveFormerChairmanMessage,
+} from "@/lib/formerChairman";
 
 export const runtime = "nodejs";
-
-const defaultProfileItems = [
-  "Position | Chairman",
-  "Education | B.Com (Hons), Management",
-  "Profession | Businessman & Contractor",
-  "Achievements | Recognized for leadership, dedication, and development vision.",
-  "Business Activities | First Class Contractor in LGED & Roads & Highways department all over Dhaka City Corporation. (1981-2006)",
-  "Legacy | A lasting contribution to structured growth and corporate trust.",
-  "Personal Qualities | Known for integrity, vision, and commitment to excellence.",
-  "Foreign Visit | India & KSA",
-].join("\n");
+export const dynamic = "force-dynamic";
 
 function cleanText(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
@@ -25,30 +18,8 @@ function nullableText(value: unknown) {
   return text || null;
 }
 
-async function getOrCreateMessage() {
-  const existing = await prisma.formerChairmanMessage.findFirst({
-    orderBy: { createdAt: "asc" },
-  });
-
-  if (existing) return existing;
-
-  return prisma.formerChairmanMessage.create({
-    data: {
-      isActive: true,
-      name: "Former Chairman",
-      designation: "",
-      image: "/images/message/former-chairman.jpg",
-      title: "Former Chairman Message",
-      eyebrow: "Who We Are",
-      introLead:
-        "A vision for planned development, responsible growth, and reliable living opportunities for future generations.",
-      articleLabel: "Message",
-      articleHeading:
-        "Building with vision, trust, and long-term responsibility.",
-      messageBody: "",
-      profileItems: defaultProfileItems,
-    },
-  });
+function cleanBoolean(value: unknown) {
+  return typeof value === "boolean" ? value : true;
 }
 
 export async function GET() {
@@ -56,8 +27,10 @@ export async function GET() {
   if (unauthorized) return unauthorized;
 
   try {
-    const message = await getOrCreateMessage();
-    return NextResponse.json({ message });
+    const message = await getOrCreateEffectiveFormerChairmanMessage();
+    const response = NextResponse.json({ message });
+    response.headers.set("Cache-Control", "no-store, max-age=0");
+    return response;
   } catch (error) {
     console.error("ADMIN_FORMER_CHAIRMAN_GET_ERROR", error);
     return NextResponse.json(
@@ -76,12 +49,12 @@ export async function PUT(request: Request) {
 
   try {
     const body = await request.json();
-    const existing = await getOrCreateMessage();
+    const existing = await getOrCreateEffectiveFormerChairmanMessage();
 
     const updated = await prisma.formerChairmanMessage.update({
       where: { id: existing.id },
       data: {
-        isActive: body.isActive !== false,
+        isActive: cleanBoolean(body.isActive),
         name: cleanText(body.name) || "Former Chairman",
         designation: nullableText(body.designation),
         image: nullableText(body.image),
@@ -95,7 +68,9 @@ export async function PUT(request: Request) {
       },
     });
 
-    return NextResponse.json({ message: updated });
+    const response = NextResponse.json({ message: updated });
+    response.headers.set("Cache-Control", "no-store, max-age=0");
+    return response;
   } catch (error) {
     console.error("ADMIN_FORMER_CHAIRMAN_PUT_ERROR", error);
     return NextResponse.json(

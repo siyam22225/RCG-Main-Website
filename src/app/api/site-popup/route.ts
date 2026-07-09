@@ -1,5 +1,6 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { safePublicMediaUrl } from "@/lib/public-media";
 
 export const runtime = "nodejs";
 
@@ -68,6 +69,7 @@ export async function GET() {
       popup: rows[0]
         ? {
             ...rows[0],
+            imageUrl: safePublicMediaUrl(rows[0].imageUrl),
             updatedAt: rows[0].updatedAt.toISOString(),
           }
         : null,

@@ -1,4 +1,3 @@
-﻿import Image from "next/image";
 import { getAboutPageContent } from "@/lib/about-pages";
 
 export const revalidate = 300;
@@ -36,27 +35,6 @@ export default async function CorporateProfilePage() {
         padding: "0 0 70px",
       }}
     >
-      <div
-        style={{
-          position: "relative",
-          width: "100%",
-          height: "min(74vh, 760px)",
-          minHeight: "560px",
-          overflow: "hidden",
-          background: "#e5e7eb",
-          boxShadow: "0 24px 54px rgba(15, 23, 42, 0.18)",
-        }}
-      >
-        <Image
-          src={content.imageUrl}
-          alt={content.title}
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: "cover", objectPosition: "center center" }}
-        />
-      </div>
-
       <div
         style={{
           maxWidth: "1120px",

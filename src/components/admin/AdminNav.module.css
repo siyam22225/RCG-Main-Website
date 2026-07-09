@@ -74,6 +74,15 @@
   align-items: center;
 }
 
+.adminNavGroup::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 10px;
+}
+
 .adminNavDropdown {
   position: absolute;
   top: calc(100% + 8px);

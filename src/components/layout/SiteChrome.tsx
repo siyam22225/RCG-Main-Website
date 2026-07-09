@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import type { ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SocialSidebar from "@/components/layout/SocialSidebar";
@@ -13,28 +14,11 @@ const adminBackground =
 export default function SiteChrome({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
-  const [pathname, setPathname] = useState<string | null>(null);
+  const pathname = usePathname();
 
-  useEffect(() => {
-    setPathname(window.location.pathname);
-  }, []);
-
-  if (pathname === null) {
-    return (
-      <main
-        style={{
-          minHeight: "100vh",
-          background: adminBackground,
-        }}
-      >
-        {children}
-      </main>
-    );
-  }
-
-  if (pathname.startsWith("/admin")) {
+  if (pathname?.startsWith("/admin")) {
     return (
       <main
         style={{

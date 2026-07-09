@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 
@@ -43,6 +43,7 @@ function markSeenThisVisit() {
 export default function SitePopup() {
   const [popup, setPopup] = useState<PopupSetting | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [imageFailed, setImageFailed] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -71,6 +72,10 @@ export default function SitePopup() {
       cancelled = true;
     };
   }, []);
+
+  useEffect(() => {
+    setImageFailed(false);
+  }, [popup?.imageUrl]);
 
   useEffect(() => {
     if (!popup || !isVisible) return;
@@ -190,9 +195,13 @@ export default function SitePopup() {
           X
         </button>
 
-        {hasText(popup.imageUrl) ? (
+        {hasText(popup.imageUrl) && !imageFailed ? (
           <div className="sitePopupImageWrap">
-            <img src={popup.imageUrl || ""} alt={popup.title || "Popup"} />
+            <img
+              src={popup.imageUrl || ""}
+              alt={popup.title || "Popup"}
+              onError={() => setImageFailed(true)}
+            />
           </div>
         ) : null}
 

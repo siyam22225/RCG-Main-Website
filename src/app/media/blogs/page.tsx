@@ -1,115 +1,301 @@
-﻿const blogPosts = [
-  {
-    title: "How to Choose the Right Location for a Property Investment",
-    category: "Real Estate Guide",
-    description:
-      "Location is one of the most important factors in real estate. Road access, surrounding development, utility availability, and future growth plans should be checked before making a decision.",
-  },
-  {
-    title: "What Buyers Should Check Before Booking an Apartment",
-    category: "Buyer Awareness",
-    description:
-      "Before booking an apartment, clients should review the project location, land documents, floor plan, payment schedule, construction timeline, and handover commitment.",
-  },
-  {
-    title: "Why Organized Housing Projects Are Becoming Popular",
-    category: "Housing Insight",
-    description:
-      "Planned housing projects provide better layout, community planning, utility management, road structure, and long-term value for families and investors.",
-  },
-  {
-    title: "Commercial Space Planning for Growing Businesses",
-    category: "Commercial Property",
-    description:
-      "A suitable commercial space should support customer access, visibility, parking, business growth, and professional environment.",
-  },
-  {
-    title: "Understanding Project Brochures and Layout Plans",
-    category: "Client Education",
-    description:
-      "Project brochures and layout plans help clients understand unit size, orientation, facilities, common areas, and the overall planning quality of a development.",
-  },
-  {
-    title: "Real Estate Development and Long-Term Value Creation",
-    category: "Market Perspective",
-    description:
-      "Strong real estate development focuses not only on construction, but also on location value, planning quality, legal clarity, and sustainable client trust.",
-  },
-];
+import Image from "next/image";
+import Link from "next/link";
+import { getPublishedBlogs } from "@/lib/blogs";
 
-export default function BlogsPage() {
+export const dynamic = "force-dynamic";
+
+function formatDate(date: string | Date | null) {
+  if (!date) return "Recently published";
+
+  return new Date(date).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
+export default async function BlogsPage() {
+  let blogPosts: Awaited<ReturnType<typeof getPublishedBlogs>> = [];
+
+  try {
+    blogPosts = await getPublishedBlogs();
+  } catch (error) {
+    console.error("MEDIA_BLOGS_PAGE_ERROR", error);
+  }
+
   return (
-    <main style={{ minHeight: "100vh", background: "#f8fbff" }}>
-      <section
-        style={{
-          padding: "96px 24px 72px",
-          background: "linear-gradient(135deg, #0f172a 0%, #075c9d 55%, #0f9f6e 100%)",
-          color: "#ffffff",
-        }}
-      >
-        <div style={{ maxWidth: "1180px", margin: "0 auto" }}>
-          <p style={{ letterSpacing: "0.18em", fontWeight: 900, textTransform: "uppercase" }}>
-            Real Estate Insights
-          </p>
-          <h1 style={{ marginTop: "18px", fontSize: "56px", lineHeight: 1.05, maxWidth: "760px" }}>
-            Blogs and Property Updates
-          </h1>
-          <p style={{ marginTop: "22px", maxWidth: "760px", fontSize: "19px", lineHeight: 1.8 }}>
-            Read practical articles about property selection, housing projects,
-            apartment buying, commercial spaces, real estate planning, and client-focused
-            development insights from Real Capita Group.
-          </p>
-        </div>
-      </section>
+    <section className="blogs-page">
+      <style>{`
+        .blogs-page {
+          padding: 54px 20px 82px;
+          background:
+            radial-gradient(circle at top left, rgba(22, 163, 74, 0.10), transparent 34%),
+            radial-gradient(circle at top right, rgba(37, 99, 235, 0.11), transparent 30%),
+            linear-gradient(180deg, #eef9fc 0%, #e8f8fb 48%, #f8fbff 100%);
+        }
 
-      <section style={{ maxWidth: "1180px", margin: "0 auto", padding: "64px 24px" }}>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-            gap: "24px",
-          }}
-        >
-          {blogPosts.map((post) => (
-            <article
-              key={post.title}
-              style={{
-                background: "#ffffff",
-                borderRadius: "24px",
-                padding: "30px",
-                boxShadow: "0 18px 50px rgba(15, 23, 42, 0.08)",
-                border: "1px solid rgba(148, 163, 184, 0.18)",
-              }}
-            >
-              <span
-                style={{
-                  display: "inline-flex",
-                  padding: "8px 14px",
-                  borderRadius: "999px",
-                  background: "#eefdf5",
-                  color: "#08784f",
-                  fontWeight: 900,
-                  fontSize: "13px",
-                }}
+        .blogs-container {
+          max-width: 1120px;
+          margin: 0 auto;
+        }
+
+        .blogs-header {
+          margin-bottom: 30px;
+        }
+
+        .blogs-header p {
+          margin: 0 0 10px;
+          color: #16a34a;
+          font-size: 13px;
+          font-weight: 900;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+        }
+
+        .blogs-header h1 {
+          margin: 0;
+          color: #0f172a;
+          font-size: clamp(34px, 5vw, 56px);
+          line-height: 1.05;
+          font-weight: 900;
+          letter-spacing: -0.045em;
+          font-family: Georgia, "Times New Roman", serif;
+        }
+
+        .blogs-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 22px;
+          align-items: stretch;
+        }
+
+        .blog-card {
+          min-width: 0;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          text-decoration: none;
+          color: inherit;
+          border-radius: 24px;
+          background: rgba(255, 255, 255, 0.96);
+          border: 1px solid rgba(226, 232, 240, 0.95);
+          box-shadow:
+            0 16px 42px rgba(15, 23, 42, 0.08),
+            inset 0 1px 0 rgba(255, 255, 255, 0.85);
+          transition:
+            transform 0.28s ease,
+            box-shadow 0.28s ease,
+            border-color 0.28s ease;
+        }
+
+        .blog-card:hover {
+          transform: translateY(-7px);
+          border-color: rgba(37, 99, 235, 0.28);
+          box-shadow:
+            0 24px 60px rgba(15, 23, 42, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        .image-wrap {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 16 / 10;
+          overflow: hidden;
+          background: #e2e8f0;
+          flex-shrink: 0;
+        }
+
+        .blog-image {
+          object-fit: cover;
+          transition: transform 0.35s ease;
+        }
+
+        .blog-card:hover .blog-image {
+          transform: scale(1.07);
+        }
+
+        .image-placeholder {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 20px;
+          color: #075c9d;
+          font-size: 13px;
+          font-weight: 900;
+          letter-spacing: 0.13em;
+          text-transform: uppercase;
+          background: linear-gradient(135deg, #e8fff1 0%, #eef8ff 100%);
+        }
+
+        .card-body {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          padding: 20px 20px 18px;
+        }
+
+        .blog-meta {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          flex-wrap: wrap;
+          margin-bottom: 12px;
+          color: #64748b;
+          font-size: 12px;
+          font-weight: 800;
+        }
+
+        .category-pill {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 999px;
+          padding: 6px 10px;
+          color: #166534;
+          background: #dcfce7;
+          font-size: 11px;
+          font-weight: 900;
+        }
+
+        .card-body h2 {
+          margin: 0 0 10px;
+          color: #0f172a;
+          font-size: 22px;
+          font-weight: 900;
+          line-height: 1.18;
+          letter-spacing: -0.03em;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          word-break: break-word;
+        }
+
+        .card-body p {
+          margin: 0;
+          color: #475569;
+          font-size: 14px;
+          line-height: 1.7;
+          font-weight: 600;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          word-break: break-word;
+        }
+
+        .read-more {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          margin-top: auto;
+          padding-top: 16px;
+          color: #15803d;
+          font-size: 12px;
+          font-weight: 900;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+
+        .empty-card {
+          max-width: 620px;
+          margin: 0 auto;
+          text-align: center;
+          border-radius: 28px;
+          background: #ffffff;
+          border: 1px solid #e2e8f0;
+          padding: 42px 28px;
+          box-shadow: 0 20px 50px rgba(15, 23, 42, 0.10);
+        }
+
+        .empty-card h2 {
+          margin: 0 0 10px;
+          color: #0f172a;
+          font-size: 30px;
+          font-weight: 900;
+        }
+
+        .empty-card p {
+          margin: 0;
+          color: #64748b;
+          font-size: 16px;
+          line-height: 1.7;
+        }
+
+        @media (max-width: 980px) {
+          .blogs-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+        }
+
+        @media (max-width: 620px) {
+          .blogs-page {
+            padding: 42px 14px 72px;
+          }
+
+          .blogs-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}</style>
+
+      <div className="blogs-container">
+        <div className="blogs-header">
+          <p>Real Estate Insights</p>
+          <h1>Blogs and Property Updates</h1>
+        </div>
+
+        {blogPosts.length === 0 ? (
+          <div className="empty-card">
+            <h2>No blogs available</h2>
+            <p>Published blog posts will appear here once they are added.</p>
+          </div>
+        ) : (
+          <div className="blogs-grid">
+            {blogPosts.map((post) => (
+              <Link
+                key={post.id}
+                href={`/media/blogs/${post.slug}`}
+                className="blog-card"
               >
-                {post.category}
-              </span>
+                <div className="image-wrap">
+                  {post.imageUrl ? (
+                    <Image
+                      src={post.imageUrl}
+                      alt={post.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 360px"
+                      className="blog-image"
+                    />
+                  ) : (
+                    <div className="image-placeholder">Real Capita Blog</div>
+                  )}
+                </div>
 
-              <h2 style={{ marginTop: "18px", color: "#0f172a", fontSize: "24px", lineHeight: 1.25 }}>
-                {post.title}
-              </h2>
+                <div className="card-body">
+                  <div className="blog-meta">
+                    {post.category ? (
+                      <span className="category-pill">{post.category}</span>
+                    ) : null}
+                    <span>{formatDate(post.publishedAt || post.createdAt)}</span>
+                  </div>
 
-              <p style={{ marginTop: "14px", color: "#475569", lineHeight: 1.8 }}>
-                {post.description}
-              </p>
+                  <h2>{post.title}</h2>
+                  <p>{post.excerpt}</p>
 
-              <p style={{ marginTop: "22px", color: "#075c9d", fontWeight: 900 }}>
-                Full article will be published soon
-              </p>
-            </article>
-          ))}
-        </div>
-      </section>
-    </main>
+                  <div className="read-more">
+                    <span>Read Article</span>
+                    <span>→</span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
   );
 }
