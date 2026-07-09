@@ -49,6 +49,8 @@ export default function EnterpriseCard({ item }: EnterpriseCardProps) {
             src={item.image}
             alt={item.name}
             fill
+            sizes="(max-width: 768px) calc(100vw - 48px), (max-width: 1200px) calc((100vw - 96px) / 3), 360px"
+            loading="lazy"
             style={{
               objectFit: "cover",
               transform: isHovered ? "scale(1.08)" : "scale(1)",

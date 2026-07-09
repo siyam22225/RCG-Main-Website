@@ -269,6 +269,7 @@ export default async function BlogsPage() {
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 360px"
                       className="blog-image"
+                      loading="lazy"
                     />
                   ) : (
                     <div className="image-placeholder">Real Capita Blog</div>

@@ -270,6 +270,7 @@ export default async function AllNewsPage() {
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 240px"
                     className="news-image"
+                    loading="lazy"
                   />
                   <div className="image-overlay" />
                   <span className="date-pill">{formatDate(item.publishedAt)}</span>

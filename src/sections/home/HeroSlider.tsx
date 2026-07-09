@@ -348,6 +348,7 @@ export default function HeroSlider({
                 alt={getAltText(slide)}
                 fill
                 priority={index === 0}
+                loading={index === 0 ? "eager" : "lazy"}
                 sizes="100vw"
                 className="rchHeroImage"
               />

@@ -401,6 +401,7 @@ export default function LatestNewsClient({ items }: Props) {
                           fill
                           className="latest-news-image"
                           sizes="(max-width: 640px) 50vw, 33vw"
+                          loading="lazy"
                         />
                       </div>
 

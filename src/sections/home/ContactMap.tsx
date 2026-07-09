@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useSiteShell } from "@/components/layout/SiteShellContext";
 
 type Office = {
@@ -79,6 +79,8 @@ export default function ContactMap() {
   const { data: siteShell } = useSiteShell();
   const [selectedOfficeId, setSelectedOfficeId] =
     useState<string>("corporate-office");
+  const [shouldLoadMap, setShouldLoadMap] = useState(false);
+  const mapFrameRef = useRef<HTMLDivElement | null>(null);
 
   const offices = useMemo(() => {
     const dynamicOffices = Array.isArray(siteShell?.contact?.offices)
@@ -104,6 +106,29 @@ export default function ContactMap() {
       setSelectedOfficeId(offices[0]?.id || "corporate-office");
     }
   }, [offices, selectedOfficeId]);
+
+  useEffect(() => {
+    if (shouldLoadMap) return;
+
+    const node = mapFrameRef.current;
+    if (!node || typeof IntersectionObserver === "undefined") {
+      setShouldLoadMap(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setShouldLoadMap(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "180px" }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [shouldLoadMap]);
 
   const selectedOffice = useMemo(() => {
     return offices.find((office) => office.id === selectedOfficeId) ?? offices[0];
@@ -164,7 +189,11 @@ export default function ContactMap() {
                 <button
                   key={office.id}
                   type="button"
-                  onClick={() => setSelectedOfficeId(office.id)}
+                  onClick={() => {
+                    setSelectedOfficeId(office.id);
+                    setShouldLoadMap(true);
+                  }}
+                  onFocus={() => setShouldLoadMap(true)}
                   style={{
                     textAlign: "left",
                     padding: "18px 18px 16px",
@@ -226,22 +255,42 @@ export default function ContactMap() {
           </div>
 
           <div
+            ref={mapFrameRef}
             style={{
               width: "100%",
               height: "clamp(260px, 34vw, 380px)",
               background: "#e5e7eb",
             }}
           >
-            <iframe
-              key={selectedOffice.id}
-              src={selectedOffice.embedSrc}
-              width="100%"
-              height="100%"
-              style={{ border: 0, display: "block" }}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title={`${selectedOffice.name} location map`}
-            />
+            {shouldLoadMap ? (
+              <iframe
+                key={selectedOffice.id}
+                src={selectedOffice.embedSrc}
+                width="100%"
+                height="100%"
+                style={{ border: 0, display: "block" }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title={`${selectedOffice.name} location map`}
+              />
+            ) : (
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "#475569",
+                  fontSize: "15px",
+                  fontWeight: 800,
+                  background:
+                    "linear-gradient(135deg, rgba(226,232,240,0.92), rgba(248,250,252,0.96))",
+                }}
+              >
+                Loading map...
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -979,6 +979,7 @@ export default function Header() {
               alt=""
               fill
               priority
+              sizes="(max-width: 768px) 220px, 380px"
               style={{ objectFit: "contain", objectPosition: "left center" }}
             />
           </div>
@@ -1389,6 +1390,7 @@ export default function Header() {
                   src={headerLogo.logoUrl}
                   alt=""
                   fill
+                  sizes="220px"
                   style={{ objectFit: "contain", objectPosition: "left center" }}
                 />
               </div>
