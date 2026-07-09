@@ -1,0 +1,1206 @@
+{
+  "officeSetting": [
+    {
+      "id": "cmoe47bic0000nrlludgpzh1x",
+      "key": "corporate-office",
+      "title": "Corporate Office ",
+      "address": "House# 05, Flat# C-4 & C-5, Road# 21, Gulshan-1, Dhaka-1212, Bangladesh",
+      "phone": "Tel: +88-02-226600699",
+      "email": "realcapita89@gmail.com",
+      "mapUrl": null,
+      "sortOrder": 1,
+      "isActive": true,
+      "createdAt": "2026-04-25T09:06:12.612Z",
+      "updatedAt": "2026-04-26T15:06:00.331Z"
+    },
+    {
+      "id": "cmoe47ddc0001nrlldwdpox1y",
+      "key": "sales-office",
+      "title": "Sales Office",
+      "address": "Level-19, Nafi Tower, 53, Gulshan-Avenue, Gulshan-1, Dhaka-1212, Bangladesh",
+      "phone": "Tel: +88-02-8833232",
+      "email": "realcapita54@gmail.com",
+      "mapUrl": null,
+      "sortOrder": 2,
+      "isActive": true,
+      "createdAt": "2026-04-25T09:06:15.024Z",
+      "updatedAt": "2026-04-26T15:06:03.069Z"
+    }
+  ],
+  "socialLink": [
+    {
+      "id": "cmodce2uh0000kellxtve8it8",
+      "label": "Facebook",
+      "href": "https://www.facebook.com/realcapitagc.bd",
+      "iconUrl": "/images/social/facebook.svg",
+      "sortOrder": 1,
+      "isActive": true,
+      "createdAt": "2026-04-24T20:07:38.729Z",
+      "updatedAt": "2026-07-08T22:19:50.636Z"
+    },
+    {
+      "id": "cmodce4ng0001kell1al6lrg5",
+      "label": "Instagram",
+      "href": "https://www.instagram.com/",
+      "iconUrl": "/images/social/instagram.svg",
+      "sortOrder": 2,
+      "isActive": true,
+      "createdAt": "2026-04-24T20:07:41.068Z",
+      "updatedAt": "2026-07-08T22:19:50.911Z"
+    },
+    {
+      "id": "cmodce4vd0002kellfwrcioz7",
+      "label": "YouTube",
+      "href": "https://www.youtube.com/",
+      "iconUrl": "/images/social/youtube.svg",
+      "sortOrder": 3,
+      "isActive": true,
+      "createdAt": "2026-04-24T20:07:41.353Z",
+      "updatedAt": "2026-07-08T22:19:51.304Z"
+    },
+    {
+      "id": "cmodce53g0003kellpsxrhw3c",
+      "label": "LinkedIn",
+      "href": "https://www.linkedin.com/",
+      "iconUrl": "/images/social/linkedin.svg",
+      "sortOrder": 4,
+      "isActive": true,
+      "createdAt": "2026-04-24T20:07:41.644Z",
+      "updatedAt": "2026-07-08T22:19:51.609Z"
+    },
+    {
+      "id": "cmodce5bd0004kellytwhecqw",
+      "label": "Twitter",
+      "href": "https://x.com/",
+      "iconUrl": "/images/social/twitter.svg",
+      "sortOrder": 5,
+      "isActive": true,
+      "createdAt": "2026-04-24T20:07:41.929Z",
+      "updatedAt": "2026-07-08T22:19:51.915Z"
+    }
+  ],
+  "homeSlide": [
+    {
+      "id": "cmodfkgdl0000iillafyqwclk",
+      "title": null,
+      "subtitle": null,
+      "imageUrl": "/uploads/images/1780991909621-rc-daira-noor.jpg",
+      "buttonText": null,
+      "buttonHref": null,
+      "sortOrder": 1,
+      "isActive": true,
+      "createdAt": "2026-04-24T21:36:35.051Z",
+      "updatedAt": "2026-06-09T07:58:53.465Z"
+    },
+    {
+      "id": "cmodfkgdo0001iill33rlvmyo",
+      "title": "RC Property",
+      "subtitle": "Planned property development with long-term value.",
+      "imageUrl": "/uploads/images/1780991927139-rc-shanti-kutir.png",
+      "buttonText": "View Details",
+      "buttonHref": "/enterprise/land-rpcdl",
+      "sortOrder": 2,
+      "isActive": true,
+      "createdAt": "2026-04-24T21:36:35.051Z",
+      "updatedAt": "2026-06-09T07:58:53.830Z"
+    },
+    {
+      "id": "cmodfkgdo0002iill073n33o0",
+      "title": "RC Holdings",
+      "subtitle": "Residential and apartment-focused development.",
+      "imageUrl": "/images/hero/slide-3.jpg",
+      "buttonText": "View Details",
+      "buttonHref": "/enterprise/apartment-rchl",
+      "sortOrder": 3,
+      "isActive": true,
+      "createdAt": "2026-04-24T21:36:35.051Z",
+      "updatedAt": "2026-06-09T07:58:54.234Z"
+    },
+    {
+      "id": "cmodfkgdo0003iillkalndxbm",
+      "title": "Real Capita Concerns",
+      "subtitle": "Explore our growing portfolio of business initiatives.",
+      "imageUrl": "/images/hero/slide-4.jpg",
+      "buttonText": "Our Concern",
+      "buttonHref": "/enterprise",
+      "sortOrder": 4,
+      "isActive": true,
+      "createdAt": "2026-04-24T21:36:35.051Z",
+      "updatedAt": "2026-06-09T07:58:54.541Z"
+    }
+  ],
+  "websiteLogoSetting": [
+    {
+      "id": "main",
+      "logoUrl": "/images/logos/Asset 14.png",
+      "altText": "Real Capita Group",
+      "isEnabled": true,
+      "createdAt": "2026-04-27T17:05:28.685Z",
+      "updatedAt": "2026-04-27T17:05:28.685Z"
+    }
+  ],
+  "brandLogo": [
+    {
+      "id": "default-logo-1",
+      "name": "Logo 01",
+      "imageUrl": "/images/logos/logo-1.png",
+      "linkUrl": null,
+      "isActive": true,
+      "sortOrder": 1,
+      "createdAt": "2026-04-27T17:05:29.812Z",
+      "updatedAt": "2026-04-27T17:05:29.812Z"
+    },
+    {
+      "id": "default-logo-2",
+      "name": "Logo 02",
+      "imageUrl": "/images/logos/logo-2.png",
+      "linkUrl": null,
+      "isActive": true,
+      "sortOrder": 2,
+      "createdAt": "2026-04-27T17:05:29.812Z",
+      "updatedAt": "2026-04-27T17:05:29.812Z"
+    },
+    {
+      "id": "default-logo-3",
+      "name": "Logo 03",
+      "imageUrl": "/images/logos/logo-3.png",
+      "linkUrl": null,
+      "isActive": true,
+      "sortOrder": 3,
+      "createdAt": "2026-04-27T17:05:29.812Z",
+      "updatedAt": "2026-04-27T17:05:29.812Z"
+    },
+    {
+      "id": "default-logo-4",
+      "name": "Logo 04",
+      "imageUrl": "/images/logos/logo-4.png",
+      "linkUrl": null,
+      "isActive": true,
+      "sortOrder": 4,
+      "createdAt": "2026-04-27T17:05:29.812Z",
+      "updatedAt": "2026-04-27T17:05:29.812Z"
+    }
+  ],
+  "clientLoginSetting": [
+    {
+      "id": "main",
+      "buttonText": "Customer Login",
+      "buttonUrl": "http://15.206.221.72:6886",
+      "isEnabled": true,
+      "openInNewTab": true,
+      "createdAt": "2026-04-27T16:02:17.953Z",
+      "updatedAt": "2026-05-21T18:09:28.559Z"
+    }
+  ],
+  "formerChairmanMessage": [
+    {
+      "id": "cmougf5im0000eksui93ood8q",
+      "isActive": false,
+      "name": "Chairman",
+      "designation": "Chairman",
+      "image": "/images/message/former-chairman.jpg",
+      "title": "Chairman Message",
+      "messageBody": null,
+      "createdAt": "2026-05-06T19:32:32.303Z",
+      "updatedAt": "2026-07-09T09:15:52.131Z",
+      "eyebrow": "Who We Are",
+      "introLead": "A vision for planned development, responsible growth, and reliable living opportunities for future generations.",
+      "articleLabel": "Message",
+      "articleHeading": "Building with vision, trust, and long-term responsibility.",
+      "profileItems": "Education: Hafez (The Holy Quran)\nProfession: Businessman\nAchievements:\nMember of Dhaka Kagoj Bebshai Bohumukhi Shomobay Somity Ltd. (DKBBS)\nElected General Secretory of Bangladesh Papers Merchant Association\nMember of FBCCI\nPatron Member of Dhaka Somity\nParents Representative of Sallimullah College\nVice President of Best Boys Club\nMember of Rotary International, Dist-3281\nBusiness Activities :\nDeputy Managing Director of:\n\nRC Property Development Limited\nRC Holdings Limited\nReal Capita Developers Ltd.\nManaging Partner of:\n\nReal Capita Trade International\nAIM Consultancy & Tours\nRC Bihan, a Royal dusai resort at Sajek\nRC TentMartin, a Beach resort at Sant Martin \nInternational Visit:\nIndia, Malaysia, Singapore, Thailand, Vietnam, Indonesia, Saudi Arabia (KSA), Dubai etc."
+    }
+  ],
+  "aboutPageContent": [
+    {
+      "id": "about-corporate-profile",
+      "pageKey": "corporate-profile",
+      "title": "Corporate Profile",
+      "imageUrl": "/images/corporate-profile.jpg",
+      "paragraphs": [
+        "Real Capita Group is a diversified corporate organization built on a vision of responsible growth, dependable service, and long-term business value. The group brings together carefully developed ventures across real estate, hospitality, information technology, supply chain, and other strategic sectors under one professional platform.",
+        "With a strong focus on planning, quality, and customer confidence, Real Capita Group works to deliver projects and services that respond to practical market needs. Each concern operates with its own purpose while contributing to the wider strength, reputation, and future direction of the group.",
+        "The organization emphasizes transparency, commitment, and continuous improvement in every area of its operation. By combining business discipline with a forward-looking mindset, Real Capita Group aims to build lasting relationships with customers, partners, and the communities it serves."
+      ],
+      "isActive": true,
+      "createdAt": "2026-04-27T21:12:11.686Z",
+      "updatedAt": "2026-05-18T16:48:25.463Z"
+    },
+    {
+      "id": "about-mission-vision-values",
+      "pageKey": "mission-vision-values",
+      "title": "Mission Vision & Values",
+      "imageUrl": "/images/mission-vision-values.jpg",
+      "paragraphs": [
+        "Our mission is to develop trusted projects and business initiatives that create practical value for customers, partners, and communities. We work with a focus on service quality, long-term planning, and responsible growth.BBBBBBBBBBBb",
+        "Our vision is to become a respected and dependable corporate group known for professional excellence, customer confidence, and sustainable progress.",
+        "Our values are built on integrity, commitment, accountability, innovation, and continuous improvement."
+      ],
+      "isActive": true,
+      "createdAt": "2026-04-27T21:12:11.686Z",
+      "updatedAt": "2026-05-19T09:54:37.912Z"
+    }
+  ],
+  "seoSetting": [
+    {
+      "id": "main",
+      "siteTitle": "Real Capita Group",
+      "metaDescription": "Real Capita Group official corporate website.",
+      "metaKeywords": "real estate, property, land, apartment, Bangladesh",
+      "ogTitle": "Real Capita Group",
+      "ogDescription": "Real Capita Group official corporate website.",
+      "ogImage": "",
+      "googleVerificationCode": "",
+      "allowIndexing": true,
+      "createdAt": "2026-04-27T20:24:02.852Z",
+      "updatedAt": "2026-04-27T20:24:02.852Z"
+    }
+  ],
+  "sitePopupSetting": [
+    {
+      "id": "main",
+      "isActive": true,
+      "title": "",
+      "message": "",
+      "imageUrl": "/uploads/images/1783547416909-screenshot-2026-06-24-113005.png",
+      "buttonText": "siyam",
+      "buttonHref": "/carrer",
+      "showOncePerSession": true,
+      "createdAt": "2026-05-08T17:32:17.282Z",
+      "updatedAt": "2026-07-09T09:08:48.993Z",
+      "isTitleActive": true,
+      "isMessageActive": true,
+      "isButtonActive": true,
+      "autoCloseSeconds": 3
+    }
+  ],
+  "news": [
+    {
+      "id": "cmnuqjae70002m9llm71lqonh",
+      "title": "Real Capita shares updated service commitments",
+      "slug": "real-capita-shares-updated-service-commitments",
+      "excerpt": "The company published a fresh communication on service standards, transparency, and customer support.",
+      "content": "Real Capita Group has shared a new statement about service commitments and support quality.",
+      "imageUrl": "/images/news/photo-3.jpg",
+      "publishedAt": "2026-04-11T19:35:59.070Z",
+      "createdAt": "2026-04-11T19:35:59.070Z",
+      "updatedAt": "2026-04-11T19:35:59.070Z"
+    },
+    {
+      "id": "cmnuqjae70001m9ll2cbumd40",
+      "title": "Corporate office announces seasonal campaign",
+      "slug": "corporate-office-announces-seasonal-campaign",
+      "excerpt": "A new campaign has been introduced to improve brand visibility and customer engagement across channels.",
+      "content": "The corporate office has announced a new seasonal campaign designed to improve communication and outreach.",
+      "imageUrl": "/images/news/photo-2.jpg",
+      "publishedAt": "2026-04-11T13:35:00.000Z",
+      "createdAt": "2026-04-11T19:35:59.070Z",
+      "updatedAt": "2026-04-13T18:27:23.644Z"
+    },
+    {
+      "id": "cmnuqjae40000m9lliiyb4k32",
+      "title": "Project and customer service updates published",
+      "slug": "project-and-customer-service-updates",
+      "excerpt": "Latest updates highlight progress, service improvement, and better communication with clients.",
+      "content": "Real Capita Group has published new updates focused on project progress, customer communication, and service quality improvement.",
+      "imageUrl": "/images/news/photo-1.jpg",
+      "publishedAt": "2026-04-11T13:35:00.000Z",
+      "createdAt": "2026-04-11T19:35:59.070Z",
+      "updatedAt": "2026-04-14T22:19:06.806Z"
+    },
+    {
+      "id": "cmnuqjae80005m9llx5vzkph3",
+      "title": "Residential service desk enhancement completed",
+      "slug": "residential-service-desk-enhancement-completed",
+      "excerpt": "Customer response workflow and support communication were improved through a new service desk upgrade.",
+      "content": "Real Capita Group upgraded its residential support desk to improve efficiency and communication.fheryheryhdfyhdfyh",
+      "imageUrl": "/images/news/photo-6.jpg",
+      "publishedAt": "2026-04-11T13:35:00.000Z",
+      "createdAt": "2026-04-11T19:35:59.070Z",
+      "updatedAt": "2026-04-26T12:07:09.079Z"
+    },
+    {
+      "id": "cmnuqjae70003m9ll6d2jldbn",
+      "title": "Community support and social initiative",
+      "slug": "community-support-and-social-initiative",
+      "excerpt": "A new initiative has been launched to support community-oriented social programs.;oifxgoidrsutioerstiouewh",
+      "content": "Real Capita Group continues to invest in community support through new social initiatives.",
+      "imageUrl": "/images/news/photo-4.jpg",
+      "publishedAt": "2026-04-11T13:35:00.000Z",
+      "createdAt": "2026-04-11T19:35:59.070Z",
+      "updatedAt": "2026-04-26T13:50:56.663Z"
+    }
+  ],
+  "photo": [
+    {
+      "id": "cmq7l8huk0000iosumb44c49p",
+      "title": "real capita",
+      "imageUrl": "/uploads/images/1781066839298-press-release-the-daily-jugantor-insurence-mou.jpg",
+      "category": "Other",
+      "createdAt": "2026-06-10T04:48:02.396Z",
+      "updatedAt": "2026-06-10T04:48:02.396Z"
+    },
+    {
+      "id": "cmq7lizl30000pwsuwwezqvyo",
+      "title": "1-2-768x1200.png",
+      "imageUrl": "/uploads/images/1781067362767-1-2-768x1200.png",
+      "category": "Event",
+      "createdAt": "2026-06-10T04:56:11.943Z",
+      "updatedAt": "2026-06-10T04:56:11.943Z"
+    },
+    {
+      "id": "cmq7lj01u0001pwsu6wpxccba",
+      "title": "Article-@-Daily-Janokonthou-Press_Mohammad-Arifuzzaman.jpg",
+      "imageUrl": "/uploads/images/1781067362748-article-daily-janokonthou-press-mohammad-arifuzzaman.jpg",
+      "category": "Event",
+      "createdAt": "2026-06-10T04:56:12.546Z",
+      "updatedAt": "2026-06-10T04:56:12.546Z"
+    },
+    {
+      "id": "cmq7lj0hz0002pwsu36fg60i6",
+      "title": "Article-@-Daily-Ittefaq-Press_Mohammad-Arifuzzaman.jpg",
+      "imageUrl": "/uploads/images/1781067362742-article-daily-ittefaq-press-mohammad-arifuzzaman.jpg",
+      "category": "Event",
+      "createdAt": "2026-06-10T04:56:13.127Z",
+      "updatedAt": "2026-06-10T04:56:13.127Z"
+    },
+    {
+      "id": "cmq7loy7y0003pwsu7zgtbjp5",
+      "title": "Article-@-Daily-Tribunal-Press_Mohammad-Arifuzzaman-768x970.jpeg",
+      "imageUrl": "/uploads/images/1781067646273-article-daily-tribunal-press-mohammad-arifuzzaman-768x970.jpeg",
+      "category": "Office",
+      "createdAt": "2026-06-10T05:00:50.111Z",
+      "updatedAt": "2026-06-10T05:00:50.111Z"
+    },
+    {
+      "id": "cmq7loyp30004pwsuue3a1ezj",
+      "title": "Jugantor-Press-RCG-3rd-Year-Stepping-Up.png",
+      "imageUrl": "/uploads/images/1781067646312-jugantor-press-rcg-3rd-year-stepping-up.png",
+      "category": "Office",
+      "createdAt": "2026-06-10T05:00:50.727Z",
+      "updatedAt": "2026-06-10T05:00:50.727Z"
+    },
+    {
+      "id": "cmq7loz5n0005pwsu10iw0s1c",
+      "title": "72740381_1072433579815237_7990693706820747264_n-768x805.jpg",
+      "imageUrl": "/uploads/images/1781067646311-72740381-1072433579815237-7990693706820747264-n-768x805.jpg",
+      "category": "Office",
+      "createdAt": "2026-06-10T05:00:51.323Z",
+      "updatedAt": "2026-06-10T05:00:51.323Z"
+    },
+    {
+      "id": "cmq7lozmk0006pwsuqe5i946c",
+      "title": "117992671_164992535183035_5945604924811294327_n.jpg",
+      "imageUrl": "/uploads/images/1781067646339-117992671-164992535183035-5945604924811294327-n.jpg",
+      "category": "Office",
+      "createdAt": "2026-06-10T05:00:51.932Z",
+      "updatedAt": "2026-06-10T05:00:51.932Z"
+    },
+    {
+      "id": "cmq7lp0f50007pwsul8gn82vh",
+      "title": "Press-Release-@-The-Daily-Ittefaq_RCG-MOU-Mission-Extreme-768x1099.png",
+      "imageUrl": "/uploads/images/1781067646274-press-release-the-daily-ittefaq-rcg-mou-mission-extreme-768x1099.png",
+      "category": "Office",
+      "createdAt": "2026-06-10T05:00:52.961Z",
+      "updatedAt": "2026-06-10T05:00:52.961Z"
+    },
+    {
+      "id": "cmq7lp0wa0008pwsuk4r19yne",
+      "title": "RCG-Annual-Festival-2020.png",
+      "imageUrl": "/uploads/images/1781067646324-rcg-annual-festival-2020.png",
+      "category": "Office",
+      "createdAt": "2026-06-10T05:00:53.578Z",
+      "updatedAt": "2026-06-10T05:00:53.578Z"
+    },
+    {
+      "id": "cmq7lp1d00009pwsue6luhgxk",
+      "title": "Doinik-Purbancol-768x1280.png",
+      "imageUrl": "/uploads/images/1781067646591-doinik-purbancol-768x1280.png",
+      "category": "Office",
+      "createdAt": "2026-06-10T05:00:54.180Z",
+      "updatedAt": "2026-06-10T05:00:54.180Z"
+    },
+    {
+      "id": "cmq7lp1ti000apwsufaxt3kpv",
+      "title": "64301121_965360313855898_447233698991964160_n-768x379.jpg",
+      "imageUrl": "/uploads/images/1781067646598-64301121-965360313855898-447233698991964160-n-768x379.jpg",
+      "category": "Office",
+      "createdAt": "2026-06-10T05:00:54.774Z",
+      "updatedAt": "2026-06-10T05:00:54.774Z"
+    },
+    {
+      "id": "cmq7lp2aa000bpwsu5u5qt5xt",
+      "title": "Interview-@-Somoy-TV-01-768x599.jpeg",
+      "imageUrl": "/uploads/images/1781067646675-interview-somoy-tv-01-768x599.jpeg",
+      "category": "Office",
+      "createdAt": "2026-06-10T05:00:55.378Z",
+      "updatedAt": "2026-06-10T05:00:55.378Z"
+    },
+    {
+      "id": "cmq7lp2rl000cpwsubvoc2mfk",
+      "title": "1-2-768x1200.png",
+      "imageUrl": "/uploads/images/1781067646689-1-2-768x1200.png",
+      "category": "Office",
+      "createdAt": "2026-06-10T05:00:56.001Z",
+      "updatedAt": "2026-06-10T05:00:56.001Z"
+    },
+    {
+      "id": "cmq7lxui5000dpwsu7h86ddrt",
+      "title": "RCG Annual General Meeting  Picnic 2022",
+      "imageUrl": "/uploads/images/1781068057819-273433760-1699349157123673-8805095230706646074-n-768x512.jpg",
+      "category": "Meeting",
+      "createdAt": "2026-06-10T05:07:45.197Z",
+      "updatedAt": "2026-06-10T05:07:45.197Z"
+    },
+    {
+      "id": "cmq7lz5i0000epwsu0q8ah09b",
+      "title": "RCG Annual General Meeting  Picnic 2021 At Cox’s Bazar And Teknaf .",
+      "imageUrl": "/uploads/images/1781068116545-155043015-1461988640859727-7012366997199582258-n-768x576.jpg",
+      "category": "Meeting",
+      "createdAt": "2026-06-10T05:08:46.104Z",
+      "updatedAt": "2026-06-10T05:08:46.104Z"
+    }
+  ],
+  "video": [],
+  "careerVacancy": [
+    {
+      "id": "cmomru6im00004ksu9cln6c57",
+      "title": "sales Executive",
+      "slug": "sales-executive-1777631399786",
+      "department": "Real Estate",
+      "jobType": "Internship",
+      "location": "Dhaka, Bangladesh",
+      "salaryRange": "10000",
+      "deadline": "2026-08-10T00:00:00.000Z",
+      "shortDescription": "fyhhhhhhhhhhhhhhhhhhhhhhhhhhh",
+      "responsibilities": "yfuuuuuuuuuufyuf",
+      "requirements": "it7t778tttttttttttttttttttttttttttttttt",
+      "experience": "fresher",
+      "numberOfVacancies": null,
+      "maxCvSizeMb": 5,
+      "status": "open",
+      "isFeatured": true,
+      "createdAt": "2026-05-01T10:29:59.806Z",
+      "updatedAt": "2026-05-01T10:29:59.806Z"
+    },
+    {
+      "id": "cmony6nzy0000s4sunj7kj8mz",
+      "title": "sales executive",
+      "slug": "sales-executive-1777702526183",
+      "department": "Sales & Marketing",
+      "jobType": "Contract",
+      "location": "Dhaka, Bangladesh",
+      "salaryRange": "negotiable",
+      "deadline": null,
+      "shortDescription": "yuugifi",
+      "responsibilities": "fjjhghjkkvbnm,iugfghjkl",
+      "requirements": "yguiopjhggjkl;;lkjhjh",
+      "experience": "fresher",
+      "numberOfVacancies": null,
+      "maxCvSizeMb": 5,
+      "status": "draft",
+      "isFeatured": true,
+      "createdAt": "2026-05-02T06:15:26.206Z",
+      "updatedAt": "2026-05-02T06:15:26.206Z"
+    }
+  ],
+  "careerPageSetting": [
+    {
+      "id": "main",
+      "sectionTag": "Career",
+      "headline": "Join Real Capita Group",
+      "introText": "Real Capita Group welcomes responsible, skilled, and motivated professionals who want to build their career with a diversified business group. Candidates may submit their CV for suitable current or future opportunities.",
+      "point1": "Professional and respectful work environment",
+      "point2": "Opportunities across multiple business verticals",
+      "point3": "Practical learning through real business operations",
+      "point4": "Career growth through discipline, teamwork, and responsibility",
+      "currentOpenTitle": "Current Open Positions",
+      "noVacancyText": "No active vacancy is available at this moment. Candidates may still submit an open application for future opportunities.",
+      "applyTag": "Apply Now",
+      "applyTitle": "Submit Your CV",
+      "applyIntro": "Select an available position or submit an open application with your preferred role.",
+      "openApplicationLabel": "Open Application / Future Opportunity",
+      "preferredPositionLabel": "Preferred Position",
+      "preferredPositionPlaceholder": "Example: Sales Executive, IT Officer, Accounts Officer",
+      "customPositions": "[\"it officer\"]",
+      "createdAt": "2026-05-07T18:12:39.387Z",
+      "updatedAt": "2026-05-07T18:29:02.570Z"
+    }
+  ],
+  "blogPost": [
+    {
+      "id": "cmrd9j67q0000e6llum6xbkv4",
+      "title": "Real Capita Group Launches Updated Website",
+      "slug": "real-capita-group-launches-updated-website",
+      "excerpt": "Real Capita Group has updated its digital presence with a CMS-powered website.",
+      "content": "This is a test blog post for validating the dynamic blog CMS.\nEdited during runtime verification.",
+      "imageUrl": null,
+      "category": "Company Update",
+      "status": "published",
+      "isFeatured": false,
+      "publishedAt": "2026-07-09T08:46:44.525Z",
+      "metaTitle": null,
+      "metaDescription": null,
+      "createdAt": "2026-07-09T08:46:44.535Z",
+      "updatedAt": "2026-07-09T08:46:47.374Z"
+    }
+  ],
+  "businessVerticalCategory": [
+    {
+      "id": "cmou8q24a0008g4sub30b4mqa",
+      "label": "Agro",
+      "slug": "agro",
+      "displayOrder": 3,
+      "isActive": true,
+      "createdAt": "2026-05-06T15:57:04.186Z",
+      "updatedAt": "2026-05-06T15:57:04.539Z"
+    },
+    {
+      "id": "cmou8pvyy0000g4suy0uxi6jc",
+      "label": "Real Estate (Housing)",
+      "slug": "real-estate-housing",
+      "displayOrder": 0,
+      "isActive": true,
+      "createdAt": "2026-05-06T15:56:56.218Z",
+      "updatedAt": "2026-05-21T18:02:09.295Z"
+    },
+    {
+      "id": "cmpfssqcu00007csu2keqt9jm",
+      "label": "Real Estate (Apartment)",
+      "slug": "real-estate-apartment",
+      "displayOrder": 1,
+      "isActive": true,
+      "createdAt": "2026-05-21T18:02:10.926Z",
+      "updatedAt": "2026-05-21T18:02:10.926Z"
+    },
+    {
+      "id": "cmpfssre100017csusitpallo",
+      "label": "Real Estate (Hospitality)",
+      "slug": "real-estate-hospitality",
+      "displayOrder": 2,
+      "isActive": true,
+      "createdAt": "2026-05-21T18:02:12.265Z",
+      "updatedAt": "2026-05-21T18:02:12.265Z"
+    },
+    {
+      "id": "cmou8pysr0004g4sumaejto84",
+      "label": "Information Technology",
+      "slug": "information-technology",
+      "displayOrder": 3,
+      "isActive": true,
+      "createdAt": "2026-05-06T15:56:59.883Z",
+      "updatedAt": "2026-05-21T18:02:13.650Z"
+    },
+    {
+      "id": "cmou8q08c0006g4suynr0l4n8",
+      "label": "Supply Chain",
+      "slug": "supply-chain",
+      "displayOrder": 4,
+      "isActive": true,
+      "createdAt": "2026-05-06T15:57:01.740Z",
+      "updatedAt": "2026-05-21T18:02:14.863Z"
+    }
+  ],
+  "businessVerticalItem": [
+    {
+      "id": "cmou8q1fd0007g4su9lxhgxw5",
+      "categoryId": "cmou8q08c0006g4suynr0l4n8",
+      "label": "AFSEN Construction",
+      "enterpriseSlug": "afsen-construction",
+      "targetUrl": "/business-verticals/afsen-construction",
+      "displayOrder": 0,
+      "isActive": true,
+      "createdAt": "2026-05-06T15:57:03.289Z",
+      "updatedAt": "2026-05-16T18:50:04.945Z",
+      "imageUrl": null,
+      "description": null,
+      "location": null,
+      "websiteUrl": null
+    },
+    {
+      "id": "cmou8q2w50009g4suzv3cya7f",
+      "categoryId": "cmou8q24a0008g4sub30b4mqa",
+      "label": "AFSEN Agro Firm",
+      "enterpriseSlug": "afsen-agro-firm",
+      "targetUrl": "/business-verticals/afsen-agro-firm",
+      "displayOrder": 0,
+      "isActive": true,
+      "createdAt": "2026-05-06T15:57:05.189Z",
+      "updatedAt": "2026-05-16T18:50:05.565Z",
+      "imageUrl": null,
+      "description": null,
+      "location": null,
+      "websiteUrl": null
+    },
+    {
+      "id": "cmou8pwul0001g4sufg806tdk",
+      "categoryId": "cmou8pvyy0000g4suy0uxi6jc",
+      "label": "RC Property",
+      "enterpriseSlug": "rc-property",
+      "targetUrl": "/business-verticals/rc-property",
+      "displayOrder": 0,
+      "isActive": true,
+      "createdAt": "2026-05-06T15:56:57.357Z",
+      "updatedAt": "2026-06-10T05:37:26.292Z",
+      "imageUrl": "/uploads/images/1781069844043-02-syl-ad.jpg",
+      "description": null,
+      "location": null,
+      "websiteUrl": null
+    },
+    {
+      "id": "cmou8pxey0002g4su3d5m0r2n",
+      "categoryId": "cmpfssqcu00007csu2keqt9jm",
+      "label": "RC Holdings",
+      "enterpriseSlug": "rc-holdings",
+      "targetUrl": "/business-verticals/rc-holdings",
+      "displayOrder": 0,
+      "isActive": true,
+      "createdAt": "2026-05-06T15:56:58.090Z",
+      "updatedAt": "2026-06-10T05:38:55.661Z",
+      "imageUrl": "/uploads/images/1781069933103-rc-daira-noor-01.jpg",
+      "description": null,
+      "location": null,
+      "websiteUrl": "https://rcholdingsltd.com/"
+    },
+    {
+      "id": "cmou8py4i0003g4su7fwj6bu8",
+      "categoryId": "cmpfssre100017csusitpallo",
+      "label": "RC Bay",
+      "enterpriseSlug": "rc-bay",
+      "targetUrl": "/business-verticals/rc-bay",
+      "displayOrder": 0,
+      "isActive": true,
+      "createdAt": "2026-05-06T15:56:59.010Z",
+      "updatedAt": "2026-06-10T05:43:01.917Z",
+      "imageUrl": "/uploads/images/1781070177427-rcob-bg.jpg",
+      "description": null,
+      "location": null,
+      "websiteUrl": null
+    },
+    {
+      "id": "cmou8pzm00005g4su7m4bo4ln",
+      "categoryId": "cmou8pysr0004g4sumaejto84",
+      "label": "RESDA",
+      "enterpriseSlug": "resda",
+      "targetUrl": "/business-verticals/resda",
+      "displayOrder": 0,
+      "isActive": true,
+      "createdAt": "2026-05-06T15:57:00.936Z",
+      "updatedAt": "2026-06-10T05:48:40.278Z",
+      "imageUrl": "/uploads/images/1781070517196-resda-02.png",
+      "description": null,
+      "location": null,
+      "websiteUrl": null
+    }
+  ],
+  "enterprise": [
+    {
+      "id": "cmov4lpui0001wwsu0isxkkjv",
+      "name": "abcd test",
+      "slug": "abcd-test",
+      "description": "abcd test is a business vertical of Real Capita Group.",
+      "imageUrl": null,
+      "createdAt": "2026-05-07T06:49:29.370Z",
+      "updatedAt": "2026-05-07T17:00:22.878Z",
+      "buttonHref": "/enterprise/abcd-test",
+      "buttonText": "View Details",
+      "isActive": false,
+      "location": null,
+      "profileUrl": null,
+      "sortOrder": 0
+    },
+    {
+      "id": "cmov4o7jg0004wwsu044fv423",
+      "name": "bbbbbb",
+      "slug": "bbbbbb",
+      "description": "bbbbbb is a business vertical of Real Capita Group.",
+      "imageUrl": null,
+      "createdAt": "2026-05-07T06:51:25.612Z",
+      "updatedAt": "2026-05-07T17:00:22.878Z",
+      "buttonHref": "/enterprise/bbbbbb",
+      "buttonText": "View Details",
+      "isActive": false,
+      "location": null,
+      "profileUrl": null,
+      "sortOrder": 0
+    },
+    {
+      "id": "cmov4uu0r0001jssu6yuuccuh",
+      "name": "bbbb test",
+      "slug": "bbbb-test",
+      "description": "bbbb test is a business vertical of Real Capita Group.",
+      "imageUrl": null,
+      "createdAt": "2026-05-07T06:56:34.683Z",
+      "updatedAt": "2026-05-07T17:00:22.878Z",
+      "buttonHref": "/enterprise/bbbb-test",
+      "buttonText": "View Details",
+      "isActive": false,
+      "location": null,
+      "profileUrl": null,
+      "sortOrder": 0
+    },
+    {
+      "id": "cmol8zbo00001rosu83f9kxab",
+      "name": "Demo",
+      "slug": "demo",
+      "description": "qrerjerhiuwqefweqfbwieqgufuiwiuqwbfsdijsfnwfiweu\nwerjwerweiurhwuihwieriweriwe",
+      "imageUrl": "/images/enterprises/enterprise-1.jpg",
+      "createdAt": "2026-04-30T08:54:20.880Z",
+      "updatedAt": "2026-05-07T17:00:22.878Z",
+      "buttonHref": "https://example.com",
+      "buttonText": "Visit Website",
+      "isActive": false,
+      "location": "dhaka",
+      "profileUrl": null,
+      "sortOrder": 7
+    },
+    {
+      "id": "cmoe660z90000iblln74x2tq3",
+      "name": "RC Property",
+      "slug": "land-rpcdl",
+      "description": "Land RPCDL is one of the notable enterprise projects under Real Capita Group.\n\nThe project focuses on location strength, planning quality, and long-term development value.\n\nIt reflects the company’s broader commitment to organized and dependable project development.",
+      "imageUrl": "/images/enterprises/enterprise-1.jpg",
+      "createdAt": "2026-04-25T10:01:11.542Z",
+      "updatedAt": "2026-05-07T17:00:23.750Z",
+      "buttonHref": "https://example.com",
+      "buttonText": "Visit Website",
+      "isActive": true,
+      "location": "Abdullahpur, Keranigonj, Dhaka",
+      "profileUrl": null,
+      "sortOrder": 1
+    },
+    {
+      "id": "cmoe662fa0001ibllh8khak4z",
+      "name": "RC Holdings",
+      "slug": "apartment-rchl",
+      "description": "Apartment RCHL is positioned as a long-term development opportunity.\n\nThe project emphasizes accessibility, planning, and future value.\n\nIt contributes to the growing enterprise portfolio of Real Capita Group.",
+      "imageUrl": "/images/enterprises/enterprise-2.jpg",
+      "createdAt": "2026-04-25T10:01:13.414Z",
+      "updatedAt": "2026-05-07T17:00:23.750Z",
+      "buttonHref": "https://example.com",
+      "buttonText": "Visit Website",
+      "isActive": true,
+      "location": "Rupgonj, Narayangonj",
+      "profileUrl": null,
+      "sortOrder": 2
+    },
+    {
+      "id": "cmoe662mh0002ibllonfqym0l",
+      "name": "RC-BAY",
+      "slug": "hotel-rc-bay",
+      "description": "Hotel RC-BAY is designed with a clear focus on project identity and development promise.\n\nThe enterprise supports the company’s wider strategy of quality project expansion.\n\nIt is planned to create practical and long-term value.",
+      "imageUrl": "/images/enterprises/enterprise-3.jpg",
+      "createdAt": "2026-04-25T10:01:13.673Z",
+      "updatedAt": "2026-05-07T17:00:23.750Z",
+      "buttonHref": "https://example.com",
+      "buttonText": "Visit Website",
+      "isActive": true,
+      "location": "Sreenagar, Munshiganj",
+      "profileUrl": null,
+      "sortOrder": 3
+    },
+    {
+      "id": "cmou7ulik0000h0su62zeobnh",
+      "name": "Bithi",
+      "slug": "bithi",
+      "description": "tfyiftdrtfuyuiiougyftdtrtfyugii",
+      "imageUrl": "/images/enterprises/enterprise-1.jpg",
+      "createdAt": "2026-05-06T15:32:36.333Z",
+      "updatedAt": "2026-05-07T16:58:02.321Z",
+      "buttonHref": "#",
+      "buttonText": "Visit Website",
+      "isActive": false,
+      "location": "",
+      "profileUrl": null,
+      "sortOrder": 8
+    },
+    {
+      "id": "cmoe6630t0004ibllm9okejfz",
+      "name": "AFSEN Construction",
+      "slug": "afsen-group",
+      "description": "AFSEN Group is a location-based enterprise project under Real Capita Group.\n\nThe project focuses on positioning, project value, and brand distinction.\n\nIt adds diversity and range to the company’s development portfolio.",
+      "imageUrl": "/images/enterprises/enterprise-5.jpg",
+      "createdAt": "2026-04-25T10:01:14.189Z",
+      "updatedAt": "2026-05-07T17:00:23.750Z",
+      "buttonHref": "https://example.com",
+      "buttonText": "Visit Website",
+      "isActive": true,
+      "location": "Kuakata, Patuakhali",
+      "profileUrl": null,
+      "sortOrder": 5
+    },
+    {
+      "id": "cmoe663800005ibllmxqnun1u",
+      "name": "ABD Foundation",
+      "slug": "abdf",
+      "description": "ABDF reflects a structured and planned development direction.\n\nThe enterprise is designed to support dependable project growth and customer trust.\n\nIt aligns with the group’s long-term development goals.",
+      "imageUrl": "/images/enterprises/enterprise-6.jpg",
+      "createdAt": "2026-04-25T10:01:14.448Z",
+      "updatedAt": "2026-05-07T17:00:23.750Z",
+      "buttonHref": "https://example.com",
+      "buttonText": "Visit Website",
+      "isActive": true,
+      "location": "Abdullahpur, Keranigonj, Dhaka",
+      "profileUrl": null,
+      "sortOrder": 6
+    },
+    {
+      "id": "cmoe662to0003iblle4bar3zs",
+      "name": "RESDA",
+      "slug": "resda",
+      "description": "RC Swapnil City represents a structured enterprise initiative.\n\nThe project highlights better planning, customer confidence, and growth opportunity.\n\nIt remains an important part of the enterprise ecosystem of the group.",
+      "imageUrl": "/images/enterprises/enterprise-4.jpg",
+      "createdAt": "2026-04-25T10:01:13.932Z",
+      "updatedAt": "2026-05-07T17:00:23.750Z",
+      "buttonHref": "https://example.com",
+      "buttonText": "Visit Website",
+      "isActive": true,
+      "location": "Dhaka Region",
+      "profileUrl": null,
+      "sortOrder": 4
+    }
+  ],
+  "enterpriseProject": [
+    {
+      "id": "cmoh5yf0h00011rlld7pjr3zq",
+      "enterpriseSlug": "land-rpcdl",
+      "slug": "rc-rivery-village",
+      "name": "RC Rivery Village",
+      "location": "Rupgonj, Narayangonj",
+      "image": "/images/rc-property-projects/rc-rivery-village.jpg",
+      "shortDescription": "A location-focused project near the Rupgonj area with practical development potential.",
+      "fullDescription": [
+        "RC Rivery Village is designed as a location-oriented project under the RC Property portfolio.",
+        "The project highlights organized planning, environmental appeal, and long-term land value.",
+        "It supports the group’s broader aim of creating reliable and practical real estate opportunities."
+      ],
+      "media": [
+        {
+          "id": 1,
+          "alt": "RC Rivery Village project view",
+          "src": "/images/rc-property-projects/rc-rivery-village.jpg",
+          "type": "image"
+        },
+        {
+          "id": 2,
+          "alt": "RC Rivery Village project layout image",
+          "src": "/images/hero/slide-2.jpg",
+          "type": "image"
+        },
+        {
+          "id": 3,
+          "alt": "RC Rivery Village project location image",
+          "src": "/images/enterprises/enterprise-2.jpg",
+          "type": "image"
+        },
+        {
+          "id": 4,
+          "alt": "RC Rivery Village project video",
+          "src": "/uploads/videos/1776970739031-whatsapp-video-2026-04-24-at-00.56.38.mp4",
+          "type": "video",
+          "thumbnail": "/images/rc-property-projects/rc-rivery-village.jpg"
+        }
+      ],
+      "profilePdf": "/voucher/commercial-space-gulshan.pdf",
+      "websiteUrl": "",
+      "tour360Image": "",
+      "isActive": true,
+      "displayOrder": 2,
+      "createdAt": "2026-04-27T12:18:35.009Z",
+      "updatedAt": "2026-04-27T12:18:35.009Z",
+      "layoutPdf": null
+    },
+    {
+      "id": "cmoh5yfbl00021rlld0o62rzl",
+      "enterpriseSlug": "land-rpcdl",
+      "slug": "rc-south-valley",
+      "name": "RC South Valley",
+      "location": "Abdullahpur, Keranigonj, Dhaka",
+      "image": "/images/rc-property-projects/rc-south-valley.jpg",
+      "shortDescription": "A planned development project created around accessibility, layout quality, and future growth.",
+      "fullDescription": [
+        "RC South Valley is one of the featured projects under RC Property.",
+        "The project focuses on location strength, organized land use, and dependable development planning.",
+        "It is presented as part of Real Capita Group’s continuous effort to build structured and value-driven projects."
+      ],
+      "media": [
+        {
+          "id": 1,
+          "alt": "RC South Valley project view",
+          "src": "/images/rc-property-projects/rc-south-valley.jpg",
+          "type": "image"
+        },
+        {
+          "id": 2,
+          "alt": "RC South Valley project layout image",
+          "src": "/images/hero/slide-3.jpg",
+          "type": "image"
+        },
+        {
+          "id": 3,
+          "alt": "RC South Valley project location image",
+          "src": "/images/enterprises/enterprise-1.jpg",
+          "type": "image"
+        },
+        {
+          "id": 4,
+          "alt": "RC South Valley project video",
+          "src": "/uploads/videos/1776970794056-whatsapp-video-2026-04-24-at-00.56.38.mp4",
+          "type": "video",
+          "thumbnail": "/images/rc-property-projects/rc-south-valley.jpg"
+        }
+      ],
+      "profilePdf": "/voucher/family-apartment-mirpur.pdf",
+      "websiteUrl": "",
+      "tour360Image": "",
+      "isActive": true,
+      "displayOrder": 3,
+      "createdAt": "2026-04-27T12:18:35.409Z",
+      "updatedAt": "2026-04-27T12:18:35.409Z",
+      "layoutPdf": null
+    },
+    {
+      "id": "cmoh5yfmx00031rllhvy71d8f",
+      "enterpriseSlug": "land-rpcdl",
+      "slug": "rc-bondhujon-abashon",
+      "name": "RC Bondhujon Abashon",
+      "location": "Abdullahpur, Keranigonj, Dhaka",
+      "image": "/images/rc-property-projects/rc-bondhujon-abashon.jpg",
+      "shortDescription": "A residential-focused project built around community, planning, and sustainable growth.",
+      "fullDescription": [
+        "RC Bondhujon Abashon is a residential project under the RC Property concern.",
+        "The project emphasizes community-focused planning, practical location value, and customer trust.",
+        "It strengthens the company’s real estate portfolio with a focus on responsible and organized development."
+      ],
+      "media": [
+        {
+          "id": 1,
+          "alt": "RC Bondhujon Abashon project view",
+          "src": "/images/rc-property-projects/rc-bondhujon-abashon.jpg",
+          "type": "image"
+        },
+        {
+          "id": 2,
+          "alt": "RC Bondhujon Abashon project layout image",
+          "src": "/images/hero/slide-4.jpg",
+          "type": "image"
+        },
+        {
+          "id": 3,
+          "alt": "RC Bondhujon Abashon project location image",
+          "src": "/images/enterprises/enterprise-1.jpg",
+          "type": "image"
+        },
+        {
+          "id": 4,
+          "alt": "RC Bondhujon Abashon project video",
+          "src": "/uploads/videos/1776971242477-whatsapp-video-2026-04-24-at-00.56.38.mp4",
+          "type": "video",
+          "thumbnail": "/images/rc-property-projects/rc-bondhujon-abashon.jpg"
+        }
+      ],
+      "profilePdf": "/voucher/green-city-residential-plot.pdf",
+      "websiteUrl": "",
+      "tour360Image": "",
+      "isActive": true,
+      "displayOrder": 4,
+      "createdAt": "2026-04-27T12:18:35.817Z",
+      "updatedAt": "2026-04-27T12:18:35.817Z",
+      "layoutPdf": null
+    },
+    {
+      "id": "cmoh5yg6b00051rll7tzlkkez",
+      "enterpriseSlug": "apartment-rchl",
+      "slug": "rc-priyojan-grihayan-prokolpo",
+      "name": "RC Priyojan Grihayan Prokolpo",
+      "location": "Abdullahpur, Keranigonj, Dhaka",
+      "image": "/images/enterprises/enterprise-6.jpg",
+      "shortDescription": "A residential housing project designed around practical planning, customer need, and sustainable growth.",
+      "fullDescription": [
+        "RC Priyojan Grihayan Prokolpo is developed as a housing-focused initiative under RC Holdings.",
+        "The project emphasizes planned residential facilities, dependable project structure, and long-term value.",
+        "It supports the group’s broader goal of delivering practical and trustworthy housing opportunities."
+      ],
+      "media": [
+        {
+          "id": 1,
+          "alt": "RC Priyojan Grihayan Prokolpo main image",
+          "src": "/images/enterprises/enterprise-6.jpg",
+          "type": "image"
+        },
+        {
+          "id": 2,
+          "alt": "RC Priyojan Grihayan Prokolpo gallery image",
+          "src": "/images/hero/slide-2.jpg",
+          "type": "image"
+        },
+        {
+          "id": 3,
+          "alt": "RC Priyojan Grihayan Prokolpo project video",
+          "src": "/uploads/videos/1776970730823-whatsapp-video-2026-04-24-at-00.56.38.mp4",
+          "type": "video",
+          "thumbnail": "/images/enterprises/enterprise-6.jpg"
+        }
+      ],
+      "profilePdf": "/voucher/commercial-space-gulshan.pdf",
+      "websiteUrl": "",
+      "tour360Image": "",
+      "isActive": true,
+      "displayOrder": 2,
+      "createdAt": "2026-04-27T12:18:36.515Z",
+      "updatedAt": "2026-04-27T12:18:36.515Z",
+      "layoutPdf": null
+    },
+    {
+      "id": "cmoh5yd9300001rllc2bmm7go",
+      "enterpriseSlug": "rc-property",
+      "slug": "rc-maya-kanon",
+      "name": "RC Maya Kanon",
+      "location": "Abdullahpur, Keranigonj, Dhaka",
+      "image": "/uploads/images/1781069996678-71389013-726440544449731-5597208492613042176-n.png",
+      "shortDescription": "A planned residential land project focused on organized development and long-term location value.",
+      "fullDescription": [
+        "RC Maya Kanon is a selected RC Property project located in Abdullahpur, Keranigonj, Dhaka.",
+        "The project is positioned with a focus on planned land development, accessibility, and future residential value.",
+        "It reflects Real Capita Group’s commitment to structured project planning, customer confidence, and dependable development."
+      ],
+      "media": [
+        {
+          "id": 1,
+          "alt": "RC Maya Kanon main project image",
+          "src": "/images/rc-property-projects/rc-maya-kanon.jpg",
+          "type": "image"
+        },
+        {
+          "id": 2,
+          "alt": "RC Maya Kanon project layout image",
+          "src": "/images/hero/slide-1.jpg",
+          "type": "image"
+        },
+        {
+          "id": 3,
+          "alt": "RC Maya Kanon project location image",
+          "src": "/images/enterprises/enterprise-1.jpg",
+          "type": "image"
+        },
+        {
+          "id": 4,
+          "alt": "RC Maya Kanon project video",
+          "src": "/uploads/videos/1776970698427-whatsapp-video-2026-04-24-at-00.56.38.mp4",
+          "type": "video",
+          "thumbnail": "/images/rc-property-projects/rc-maya-kanon.jpg"
+        }
+      ],
+      "profilePdf": "/voucher/lake-view-apartment-dhaka.pdf",
+      "websiteUrl": "",
+      "tour360Image": "/images/rc-property-projects/rc-maya-kanon.jpg",
+      "isActive": true,
+      "displayOrder": 1,
+      "createdAt": "2026-04-27T12:18:32.729Z",
+      "updatedAt": "2026-06-10T05:40:11.257Z",
+      "layoutPdf": ""
+    },
+    {
+      "id": "cmoh5ygec00061rllez4hblg2",
+      "enterpriseSlug": "rc-holdings",
+      "slug": "rc-santi-kutir",
+      "name": "RC Santi Kutir",
+      "location": "Abdullahpur, Keranigonj, Dhaka",
+      "image": "/uploads/images/1780939197740-rc-shanti-kutir.png",
+      "shortDescription": "A compact apartment development focused on peaceful residential living and reliable project planning.",
+      "fullDescription": [
+        "RC Santi Kutir is a residential apartment project under RC Holdings.",
+        "The project highlights peaceful living, location convenience, and organized apartment development.",
+        "It adds value to the RC Holdings portfolio through practical design and dependable planning."
+      ],
+      "media": [
+        {
+          "id": 1,
+          "alt": "RC Santi Kutir main image",
+          "src": "/images/enterprises/enterprise-2.jpg",
+          "type": "image"
+        },
+        {
+          "id": 2,
+          "alt": "RC Santi Kutir gallery image",
+          "src": "/images/hero/slide-1.jpg",
+          "type": "image"
+        },
+        {
+          "id": 3,
+          "alt": "RC Santi Kutir project video",
+          "src": "/uploads/videos/1776970769714-whatsapp-video-2026-04-24-at-00.56.38.mp4",
+          "type": "video",
+          "thumbnail": "/images/enterprises/enterprise-2.jpg"
+        }
+      ],
+      "profilePdf": "/voucher/family-apartment-mirpur.pdf",
+      "websiteUrl": "",
+      "tour360Image": "",
+      "isActive": true,
+      "displayOrder": 3,
+      "createdAt": "2026-04-27T12:18:36.804Z",
+      "updatedAt": "2026-06-10T04:25:37.930Z",
+      "layoutPdf": ""
+    },
+    {
+      "id": "cmoh5yfya00041rllr3p2tu4s",
+      "enterpriseSlug": "apartment-rchl",
+      "slug": "rc-maya-kanon-eco-village",
+      "name": "RC Maya Kanon Eco Village",
+      "location": "Abdullahpur, Keranigonj, Dhaka",
+      "image": "/images/enterprises/enterprise-6.jpg",
+      "shortDescription": "A planned apartment project focused on organized living, location value, and long-term residential comfort.",
+      "fullDescription": [
+        "RC Maya Kanon Eco Village is a featured project under RC Holdings.\nThe project focuses on modern residential planning, accessible location value, and dependable apartment development.\nIt reflects Real Capita Group’s commitment to structured housing solutions and customer confidence."
+      ],
+      "media": [
+        {
+          "id": 1,
+          "alt": "RC Maya Kanon Eco Village main image",
+          "src": "/images/enterprises/enterprise-6.jpg",
+          "type": "image"
+        },
+        {
+          "id": 2,
+          "alt": "RC Maya Kanon Eco Village gallery image",
+          "src": "/images/hero/slide-4.jpg",
+          "type": "image"
+        },
+        {
+          "id": 3,
+          "alt": "RC Maya Kanon Eco Village project video",
+          "src": "/uploads/videos/1776976517322-whatsapp-video-2026-04-24-at-00.56.38.mp4",
+          "type": "video",
+          "thumbnail": "/images/enterprises/enterprise-6.jpg"
+        }
+      ],
+      "profilePdf": "/voucher/lake-view-apartment-dhaka.pdf",
+      "websiteUrl": "",
+      "tour360Image": "",
+      "isActive": true,
+      "displayOrder": 1,
+      "createdAt": "2026-04-27T12:18:36.226Z",
+      "updatedAt": "2026-04-30T09:37:43.662Z",
+      "layoutPdf": null
+    },
+    {
+      "id": "cmp6ldaer0000lssup4s9z9qy",
+      "enterpriseSlug": "gc-property",
+      "slug": "gulshan-grocery",
+      "name": "Gulshan grocery",
+      "location": "Dhaka",
+      "image": "",
+      "shortDescription": "",
+      "fullDescription": [],
+      "media": [],
+      "profilePdf": "",
+      "websiteUrl": "",
+      "tour360Image": "",
+      "isActive": true,
+      "displayOrder": 0,
+      "createdAt": "2026-05-15T07:24:17.524Z",
+      "updatedAt": "2026-05-15T07:24:17.524Z",
+      "layoutPdf": ""
+    }
+  ]
+}

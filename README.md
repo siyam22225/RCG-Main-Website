@@ -33,30 +33,35 @@ is explicitly requested.
 ## Local Setup
 
 1. Copy `.env.example` to `.env`.
-2. Fill in local values for the required environment variables.
-3. Install dependencies:
 
-   ```bash
-   npm ci
-   ```
+   Command: `cp .env.example .env`
 
-4. Validate Prisma and generate the client:
+2. Fill in local values for the required environment variables, especially `DATABASE_URL`, `ADMIN_JWT_SECRET`, and `NEXT_PUBLIC_SITE_URL`.
 
-   ```bash
-   npx prisma validate
-   npx prisma generate
-   ```
+3. Install dependencies.
 
-5. Start development:
+   Command: `npm ci`
 
-   ```bash
-   npm run dev
-   ```
+4. Validate Prisma, generate the client, and apply existing migrations.
 
-Open `http://localhost:3000`. The default development command uses Webpack for
-Windows stability because Turbopack hit `Access is denied (os error 5)` on this
-machine. Turbopack remains available for future testing with
-`npm run dev:turbopack`.
+   Commands:
+   `npx prisma validate`
+   `npx prisma generate`
+   `npx prisma migrate deploy`
+
+5. Seed required data.
+
+   To create the first admin account from the `CREATE_ADMIN_*` values in `.env`:
+   `npm run seed`
+
+   To restore the portable CMS/site content used by the website:
+   `npm run seed:cms`
+
+6. Start development.
+
+   Command: `npm run dev`
+
+Open `http://localhost:3000`. The default development command uses Webpack for Windows stability. Turbopack remains available with `npm run dev:turbopack`.
 
 ## Required Environment Variables
 
