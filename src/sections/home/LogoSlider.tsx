@@ -11,6 +11,10 @@ type BrandLogo = {
   sortOrder?: number;
 };
 
+type LogoSliderProps = {
+  initialLogos?: BrandLogo[];
+};
+
 const fallbackLogos: BrandLogo[] = [
   { id: 1, name: "Logo 01", imageUrl: "/images/logos/logo-1.png" },
   { id: 2, name: "Logo 02", imageUrl: "/images/logos/logo-2.png" },
@@ -18,10 +22,39 @@ const fallbackLogos: BrandLogo[] = [
   { id: 4, name: "Logo 04", imageUrl: "/images/logos/logo-4.png" },
 ];
 
-export default function LogoSlider() {
-  const [logos, setLogos] = useState<BrandLogo[]>(fallbackLogos);
+function normalizeLogos(logos?: BrandLogo[]) {
+  return Array.isArray(logos)
+    ? logos
+        .filter((logo) => logo.imageUrl)
+        .map((logo) => ({
+          id: logo.id,
+          name: logo.name || "Brand Logo",
+          imageUrl: logo.imageUrl,
+          linkUrl: logo.linkUrl || null,
+          sortOrder: logo.sortOrder || 0,
+        }))
+    : [];
+}
+
+export default function LogoSlider({ initialLogos }: LogoSliderProps) {
+  const hasInitialLogos = Array.isArray(initialLogos);
+  const normalizedInitialLogos = useMemo(
+    () => normalizeLogos(initialLogos),
+    [initialLogos]
+  );
+  const [logos, setLogos] = useState<BrandLogo[]>(
+    normalizedInitialLogos.length ? normalizedInitialLogos : fallbackLogos
+  );
 
   useEffect(() => {
+    if (!hasInitialLogos) return;
+
+    setLogos(normalizedInitialLogos.length ? normalizedInitialLogos : fallbackLogos);
+  }, [hasInitialLogos, normalizedInitialLogos]);
+
+  useEffect(() => {
+    if (hasInitialLogos) return;
+
     let mounted = true;
 
     async function loadLogos() {
@@ -29,17 +62,7 @@ export default function LogoSlider() {
         const res = await fetch("/api/logo-settings");
         const data = await res.json();
 
-        const loaded = Array.isArray(data.brandLogos)
-          ? data.brandLogos
-              .filter((logo: any) => logo.imageUrl)
-              .map((logo: any) => ({
-                id: logo.id,
-                name: logo.name || "Brand Logo",
-                imageUrl: logo.imageUrl,
-                linkUrl: logo.linkUrl || null,
-                sortOrder: logo.sortOrder || 0,
-              }))
-          : [];
+        const loaded = normalizeLogos(data.brandLogos);
 
         if (mounted && loaded.length) setLogos(loaded);
       } catch (error) {
@@ -53,7 +76,7 @@ export default function LogoSlider() {
     return () => {
       mounted = false;
     };
-  }, []);
+  }, [hasInitialLogos]);
 
   const loopLogos = useMemo(() => [...logos, ...logos], [logos]);
 

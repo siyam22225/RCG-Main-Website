@@ -45,19 +45,22 @@ function getAltText(slide: HomeSlide) {
 }
 
 export default function HeroSlider({
-  slides = [],
-  initialSlides = [],
+  slides,
+  initialSlides,
 }: HeroSliderProps) {
+  const hasInitialSlides = Array.isArray(initialSlides);
+  const hasPassedSlides = Array.isArray(slides) && slides.length > 0;
+
   const passedSlides = useMemo(() => {
-    const source = slides.length > 0 ? slides : initialSlides;
+    const source = hasPassedSlides ? slides : initialSlides || [];
     return source.filter((slide) => slide.isActive !== false);
-  }, [slides, initialSlides]);
+  }, [hasPassedSlides, slides, initialSlides]);
 
   const [loadedSlides, setLoadedSlides] = useState<HomeSlide[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    if (passedSlides.length > 0) return;
+    if (passedSlides.length > 0 || hasInitialSlides) return;
 
     let mounted = true;
 
@@ -87,7 +90,7 @@ export default function HeroSlider({
     return () => {
       mounted = false;
     };
-  }, [passedSlides.length]);
+  }, [hasInitialSlides, passedSlides.length]);
 
   const heroSlides =
     passedSlides.length > 0
