@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useSiteShell } from "@/components/layout/SiteShellContext";
 
 type Office = {
   id: string;
@@ -75,28 +76,16 @@ function getMapSrc(item: OfficeApiItem) {
 }
 
 export default function ContactMap() {
-  const [offices, setOffices] = useState<Office[]>(fallbackOffices);
+  const { data: siteShell } = useSiteShell();
   const [selectedOfficeId, setSelectedOfficeId] =
     useState<string>("corporate-office");
 
-  useEffect(() => {
-    async function loadOffices() {
-      try {
-        const res = await fetch("/api/site-contact-settings");
-
-        const data = await res.json();
-
-        if (!res.ok || !data.success || !Array.isArray(data.offices)) {
-          return;
-        }
-
-        const dynamicOffices = data.offices
-          .filter((item: OfficeApiItem) => item.key && item.title && item.address)
-          .sort(
-            (a: OfficeApiItem, b: OfficeApiItem) =>
-              (a.sortOrder || 0) - (b.sortOrder || 0)
-          )
-          .map((item: OfficeApiItem, index: number) => ({
+  const offices = useMemo(() => {
+    const dynamicOffices = Array.isArray(siteShell?.contact?.offices)
+      ? (siteShell.contact.offices as OfficeApiItem[])
+          .filter((item) => item.key && item.title && item.address)
+          .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0))
+          .map((item, index) => ({
             id: item.key,
             key: item.key,
             name: item.title,
@@ -104,19 +93,17 @@ export default function ContactMap() {
             color: getOfficeColor(item.key, index),
             embedSrc: getMapSrc(item),
             sortOrder: item.sortOrder || index + 1,
-          }));
+          }))
+      : [];
 
-        if (dynamicOffices.length > 0) {
-          setOffices(dynamicOffices);
-          setSelectedOfficeId(dynamicOffices[0].id);
-        }
-      } catch {
-        setOffices(fallbackOffices);
-      }
+    return dynamicOffices.length > 0 ? dynamicOffices : fallbackOffices;
+  }, [siteShell?.contact?.offices]);
+
+  useEffect(() => {
+    if (!offices.some((office) => office.id === selectedOfficeId)) {
+      setSelectedOfficeId(offices[0]?.id || "corporate-office");
     }
-
-    loadOffices();
-  }, []);
+  }, [offices, selectedOfficeId]);
 
   const selectedOffice = useMemo(() => {
     return offices.find((office) => office.id === selectedOfficeId) ?? offices[0];

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { useSiteShell } from "@/components/layout/SiteShellContext";
 
 type EnterpriseMenuItem = {
   id: string | number;
@@ -124,6 +125,7 @@ function normalizeBusinessVerticalGroups(data: unknown): BusinessVerticalGroup[]
 }
 
 export default function Header() {
+  const { data: siteShell } = useSiteShell();
   const [showAboutMenu, setShowAboutMenu] = useState(false);
   const [showMessageMenu, setShowMessageMenu] = useState(false);
   const [showEnterpriseMenu, setShowEnterpriseMenu] = useState(false);
@@ -162,56 +164,55 @@ export default function Header() {
   const mediaMenuTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    let mounted = true;
-
-    async function loadHeaderSettings() {
-      try {
-        const response = await fetch("/api/header-settings", { cache: "no-store" });
-
-        const json = await response.json();
-
-        if (!mounted) return;
-
-        setEnterpriseItems(normalizeEnterprises(json?.enterprises || []));
-        setPageVisibility({
-          formerChairman: json?.pageVisibility?.formerChairman !== false,
-        });
-        setTopHeaderContact({
-          email: String(json?.officeContact?.email || "").trim(),
-          phone: String(json?.officeContact?.phone || "").trim(),
-        });
-        setDynamicBusinessVerticalGroups(
-          normalizeBusinessVerticalGroups(json?.businessVerticalGroups || [])
-        );
-
-        if (json?.mainLogo?.logoUrl) {
-          setHeaderLogo({
-            logoUrl: json.mainLogo.logoUrl,
-            altText: "",
-          });
+    const json = siteShell?.header as
+      | {
+          enterprises?: unknown[];
+          pageVisibility?: { formerChairman?: boolean };
+          officeContact?: { email?: string | null; phone?: string | null };
+          businessVerticalGroups?: unknown[];
+          mainLogo?: { logoUrl?: string | null };
+          clientLogin?: {
+            show?: boolean;
+            buttonText?: string | null;
+            buttonUrl?: string | null;
+            openInNewTab?: boolean;
+          };
         }
+      | null
+      | undefined;
 
-        if (json?.clientLogin?.show && json?.clientLogin?.buttonUrl) {
-          setClientLogin({
-            show: true,
-            buttonText: json.clientLogin.buttonText || "Client Login",
-            buttonUrl: json.clientLogin.buttonUrl,
-            openInNewTab: json.clientLogin.openInNewTab !== false,
-          });
-        } else {
-          setClientLogin(null);
-        }
-      } catch (error) {
-        console.error("HEADER_SETTINGS_LOAD_ERROR", error);
-      }
+    if (!json) return;
+
+    setEnterpriseItems(normalizeEnterprises(json.enterprises || []));
+    setPageVisibility({
+      formerChairman: json.pageVisibility?.formerChairman !== false,
+    });
+    setTopHeaderContact({
+      email: String(json.officeContact?.email || "").trim(),
+      phone: String(json.officeContact?.phone || "").trim(),
+    });
+    setDynamicBusinessVerticalGroups(
+      normalizeBusinessVerticalGroups(json.businessVerticalGroups || [])
+    );
+
+    if (json.mainLogo?.logoUrl) {
+      setHeaderLogo({
+        logoUrl: json.mainLogo.logoUrl,
+        altText: "",
+      });
     }
 
-    loadHeaderSettings();
-
-    return () => {
-      mounted = false;
-    };
-  }, []);
+    if (json.clientLogin?.show && json.clientLogin.buttonUrl) {
+      setClientLogin({
+        show: true,
+        buttonText: json.clientLogin.buttonText || "Client Login",
+        buttonUrl: json.clientLogin.buttonUrl,
+        openInNewTab: json.clientLogin.openInNewTab !== false,
+      });
+    } else {
+      setClientLogin(null);
+    }
+  }, [siteShell?.header]);
 
 
 

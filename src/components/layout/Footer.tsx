@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import { officeInfo as staticOfficeInfo } from "@/data/offices";
 import { socialLinks as staticSocialLinks } from "@/data/socialLinks";
+import { useSiteShell } from "@/components/layout/SiteShellContext";
 
 type SocialLink = {
   label: string;
@@ -20,72 +21,58 @@ type OfficeSetting = {
 };
 
 export default function Footer() {
-  const [officeInfo, setOfficeInfo] = useState<OfficeSetting[]>(
-    staticOfficeInfo.map((item, index) => ({
+  const { data: siteShell } = useSiteShell();
+
+  const officeInfo = useMemo<OfficeSetting[]>(() => {
+    const dynamicOffices = Array.isArray(siteShell?.contact?.offices)
+      ? (siteShell.contact.offices as OfficeSetting[])
+          .filter((item) => item.title && item.address)
+          .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0))
+          .map((item) => ({
+            title: item.title,
+            address: item.address,
+            phone: item.phone,
+            email: item.email,
+            sortOrder: item.sortOrder || 0,
+          }))
+      : [];
+
+    if (dynamicOffices.length > 0) return dynamicOffices;
+
+    return staticOfficeInfo.map((item, index) => ({
       title: item.title,
       address: item.address,
       phone: item.phone,
       email: item.email,
       sortOrder: index + 1,
-    }))
-  );
+    }));
+  }, [siteShell?.contact?.offices]);
 
-  const [socialLinks, setSocialLinks] = useState<SocialLink[]>(
-    staticSocialLinks.map((item, index) => ({
+  const socialLinks = useMemo<SocialLink[]>(() => {
+    const shellSocialLinks = Array.isArray(siteShell?.contact?.socialLinks)
+      ? siteShell.contact.socialLinks
+      : Array.isArray(siteShell?.socialLinks)
+        ? siteShell.socialLinks
+        : [];
+
+    const dynamicLinks = (shellSocialLinks as SocialLink[])
+      .filter((item) => item.label && item.href)
+      .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0))
+      .map((item) => ({
+        label: item.label,
+        href: item.href,
+        iconUrl: item.iconUrl || null,
+        sortOrder: item.sortOrder || 0,
+      }));
+
+    if (dynamicLinks.length > 0) return dynamicLinks;
+
+    return staticSocialLinks.map((item, index) => ({
       label: item.label,
       href: item.href,
       sortOrder: index + 1,
-    }))
-  );
-
-  useEffect(() => {
-    async function loadSiteContactSettings() {
-      try {
-        const res = await fetch("/api/site-contact-settings");
-        const data = await res.json();
-
-        if (!res.ok || !data.success) return;
-
-        const dynamicOffices = Array.isArray(data.offices)
-          ? data.offices
-              .filter((item: OfficeSetting) => item.title && item.address)
-              .sort(
-                (a: OfficeSetting, b: OfficeSetting) =>
-                  (a.sortOrder || 0) - (b.sortOrder || 0)
-              )
-              .map((item: OfficeSetting) => ({
-                title: item.title,
-                address: item.address,
-                phone: item.phone,
-                email: item.email,
-                sortOrder: item.sortOrder || 0,
-              }))
-          : [];
-
-        const dynamicLinks = Array.isArray(data.socialLinks)
-          ? data.socialLinks
-              .filter((item: SocialLink) => item.label && item.href)
-              .sort(
-                (a: SocialLink, b: SocialLink) =>
-                  (a.sortOrder || 0) - (b.sortOrder || 0)
-              )
-              .map((item: SocialLink) => ({
-                label: item.label,
-                href: item.href,
-                iconUrl: item.iconUrl || null,
-                sortOrder: item.sortOrder || 0,
-              }))
-          : [];
-
-        if (dynamicOffices.length > 0) setOfficeInfo(dynamicOffices);
-        if (dynamicLinks.length > 0) setSocialLinks(dynamicLinks);
-      } catch {
-        // Keep static fallback office and social info if API fails.
-      }
-    }
-
-    loadSiteContactSettings();
-  }, []);
+    }));
+  }, [siteShell?.contact?.socialLinks, siteShell?.socialLinks]);
 
   return (
     <footer className="rcgFooter"><style>{`

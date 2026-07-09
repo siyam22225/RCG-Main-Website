@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
+import { useSiteShell } from "@/components/layout/SiteShellContext";
 
 type SocialLink = {
   id?: string | number;
@@ -38,42 +39,19 @@ function getPlatform(label: string) {
 }
 
 export default function SocialSidebar() {
-  const [links, setLinks] = useState<SocialLink[]>([]);
+  const { data: siteShell } = useSiteShell();
+  const links = useMemo(() => {
+    const data = Array.isArray(siteShell?.socialLinks)
+      ? siteShell.socialLinks
+      : Array.isArray(siteShell?.contact?.socialLinks)
+        ? siteShell.contact.socialLinks
+        : [];
 
-  useEffect(() => {
-    let mounted = true;
-
-    async function loadLinks() {
-      try {
-        const res = await fetch("/api/site-contact-settings");
-        const json = await res.json();
-
-        const data = Array.isArray(json?.socialLinks)
-          ? json.socialLinks
-          : Array.isArray(json?.data)
-            ? json.data
-            : [];
-
-        if (!mounted) return;
-
-        setLinks(
-          data.filter((item: SocialLink) => {
-            const href = getHref(item);
-            return href && item.isActive !== false;
-          })
-        );
-      } catch (error) {
-        console.error("SOCIAL_SIDEBAR_ERROR", error);
-        if (mounted) setLinks([]);
-      }
-    }
-
-    loadLinks();
-
-    return () => {
-      mounted = false;
-    };
-  }, []);
+    return (data as SocialLink[]).filter((item) => {
+      const href = getHref(item);
+      return href && item.isActive !== false;
+    });
+  }, [siteShell?.socialLinks, siteShell?.contact?.socialLinks]);
 
   if (!links.length) return null;
 

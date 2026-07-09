@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSiteShell } from "@/components/layout/SiteShellContext";
 
 type PopupSetting = {
   id: string;
@@ -41,37 +42,28 @@ function markSeenThisVisit() {
 }
 
 export default function SitePopup() {
+  const { data: siteShell, isLoading } = useSiteShell();
   const [popup, setPopup] = useState<PopupSetting | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [imageFailed, setImageFailed] = useState(false);
 
   useEffect(() => {
-    let cancelled = false;
+    if (isLoading) return;
 
-    async function loadPopup() {
-      try {
-        if (hasSeenThisVisit()) return;
+    const shellPopup = siteShell?.popup as PopupSetting | null | undefined;
 
-        const res = await fetch("/api/site-popup", { cache: "no-store" });
-        const data = await res.json();
-
-        if (cancelled) return;
-        if (!res.ok || !data?.popup || data.popup.isActive !== true) return;
-
-        setPopup(data.popup as PopupSetting);
-        setIsVisible(true);
-        markSeenThisVisit();
-      } catch (error) {
-        console.error("SITE_POPUP_LOAD_ERROR", error);
-      }
+    if (!shellPopup || shellPopup.isActive !== true) {
+      setPopup(null);
+      setIsVisible(false);
+      return;
     }
 
-    void loadPopup();
+    if (hasSeenThisVisit()) return;
 
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+    setPopup(shellPopup);
+    setIsVisible(true);
+    markSeenThisVisit();
+  }, [isLoading, siteShell?.popup]);
 
   useEffect(() => {
     setImageFailed(false);
